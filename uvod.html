@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uvod - Sefardske Romanse</title>
+    <style>
+        :root { 
+            --bg-color: #000000; --text-color: #ffffff; 
+            --blue: #0055ff; --red: #ff0000; --purple: #6a0dad; --green: #4db300; 
+        }
+        .light-mode { --bg-color: #f0f0f0; --text-color: #000000; }
+        
+        body { 
+            background-color: var(--bg-color); color: var(--text-color); 
+            margin: 0; height: 100vh; display: flex; flex-direction: column; 
+            font-family: 'Courier New', Courier, monospace; 
+            overflow: hidden; transition: background 0.3s;
+        }
+
+        header {
+            width: 100%; padding: 2.5rem 4rem;
+            display: flex; align-items: center; box-sizing: border-box;
+            position: relative; z-index: 20;
+        }
+
+        .header-logo {
+            width: 60px; margin-right: 50px; flex-shrink: 0; cursor: pointer;
+        }
+        .header-logo svg { fill: var(--text-color); }
+
+        nav {
+            display: flex; justify-content: space-between; flex-grow: 1; max-width: 1100px;
+        }
+
+        nav a { color: var(--text-color); text-decoration: none; font-size: 1.2rem; z-index: 25; }
+
+        main { display: flex; flex: 1; align-items: center; padding: 0 10%; gap: 50px; z-index: 10; }
+        .text-section { width: 55%; }
+        .intro-p { font-size: 1.4rem; line-height: 1.6; margin-bottom: 2rem; opacity: 0.5; transition: 0.3s; cursor: pointer; }
+        .intro-p:hover { opacity: 1; }
+        
+        .word { font-weight: bold; transition: color 0.3s; }
+        .p1:hover .word { color: var(--blue); }
+        .p2:hover .word { color: var(--red); }
+        .p3:hover .word { color: var(--purple); }
+        .p4:hover .word { color: var(--green); }
+
+        .art-section { width: 45%; display: flex; justify-content: center; align-items: center; }
+        .svg-container { width: 350px; height: 350px; display: none; }
+        .svg-container.active { display: block; animation: fadeIn 0.5s ease; }
+        .svg-container svg { width: 100%; height: 100%; stroke: var(--text-color); fill: none; stroke-width: 1.5; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-logo" id="theme-toggle">
+            <svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+                <path d="M50 10 V 110 H 10 V 50 A 40 40 0 0 1 50 10" fill="none" stroke="currentColor" stroke-width="5" />
+                <path d="M50 10 V 110 H 90 V 50 A 40 40 0 0 0 50 10" fill="currentColor" />
+            </svg>
+        </div>
+        <nav>
+            <a href="index.html">početna</a>
+            <a href="uvod.html" style="text-decoration: underline;">uvod</a>
+            <a href="sadrzaj.html">sadržaj</a>
+            <a href="random.html">nasumična<br>romansa</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="text-section">
+            <p class="intro-p p1" data-target="art-1">Sefardi su <span class="word">Jevreji prognani</span> iz Španije...</p>
+            <p class="intro-p p2" data-target="art-2">Cuvali su <span class="word">ključeve</span> od svojih kuća...</p>
+            <p class="intro-p p3" data-target="art-3"><span class="word">Sarajevska hagada</span> je oslikani kodeks...</p>
+            <p class="intro-p p4" data-target="art-4">Negovali su kulturu preko <span class="word">romansi</span>...</p>
+        </div>
+        <div class="art-section">
+            <div id="art-1" class="svg-container active"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" /></svg></div>
+            <div id="art-2" class="svg-container"><svg viewBox="0 0 100 100"><path d="M30 70 L70 30 M60 30 L70 30 L70 40" stroke-width="5"/></svg></div>
+            <div id="art-3" class="svg-container"><svg viewBox="0 0 100 100"><rect x="20" y="20" width="60" height="60" /></svg></div>
+            <div id="art-4" class="svg-container"><svg viewBox="0 0 100 100"><path d="M10 80 Q 50 10 90 80" /></svg></div>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('theme-toggle').onclick = () => document.body.classList.toggle('light-mode');
+
+        const paragraphs = document.querySelectorAll('.intro-p');
+        const containers = document.querySelectorAll('.svg-container');
+
+        paragraphs.forEach(p => {
+            p.addEventListener('mouseenter', () => {
+                containers.forEach(c => c.classList.remove('active'));
+                const target = document.getElementById(p.dataset.target);
+                if(target) target.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

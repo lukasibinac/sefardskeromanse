@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sefardske Romanse - Početna</title>
+    <style>
+        :root {
+            --bg-color: #000000;
+            --text-color: #ffffff;
+            --transition-speed: 0.3s;
+        }
+        .light-mode { --bg-color: #f0f0f0; --text-color: #000000; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-family: 'Courier New', Courier, monospace;
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+            overflow: hidden;
+        }
+
+        header {
+            width: 100%;
+            padding: 2.5rem 4rem;
+            display: flex;
+            align-items: center;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 20; /* Ensures links are above everything */
+        }
+
+        .logo-placeholder {
+            width: 60px;
+            margin-right: 50px;
+            flex-shrink: 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            flex-grow: 1;
+            max-width: 1100px;
+        }
+
+        nav a { 
+            color: var(--text-color); 
+            text-decoration: none; 
+            font-size: 1.2rem;
+            position: relative;
+            z-index: 25;
+        }
+
+        main {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin-top: -50px; 
+        }
+
+        .center-logo {
+            width: 180px; /* Made larger */
+            cursor: pointer;
+            margin-bottom: 3rem;
+        }
+
+        .center-logo svg { fill: var(--text-color); }
+
+        .title-container h1 {
+            font-size: 5rem; /* Increased size to look "longer/fuller" */
+            margin: 0;
+            letter-spacing: 6px;
+            line-height: 0.9;
+            font-weight: normal;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-placeholder"></div>
+        <nav>
+            <a href="index.html" style="text-decoration: underline;">početna</a>
+            <a href="uvod.html">uvod</a>
+            <a href="sadrzaj.html">sadržaj</a>
+            <a href="random.html">nasumična<br>romansa</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="center-logo" id="theme-toggle">
+            <svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+                <path d="M50 10 V 110 H 10 V 50 A 40 40 0 0 1 50 10" fill="none" stroke="currentColor" stroke-width="5" />
+                <path d="M50 10 V 110 H 90 V 50 A 40 40 0 0 0 50 10" fill="currentColor" />
+            </svg>
+        </div>
+        <div class="title-container">
+            <h1>sefardske</h1>
+            <h1>romanse</h1>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('theme-toggle').onclick = () => document.body.classList.toggle('light-mode');
+    </script>
+</body>
+</html>

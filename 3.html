@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O kako je lijepa nevjesta - Sefardske Romanse</title>
+    <style>
+        :root { 
+            --bg-color: #000000; 
+            --text-color: #ffffff; 
+            --inactive-color: #555555;
+            --transition: 0.3s ease;
+        }
+        /* Light Mode = Bosanski | Dark Mode = Ladino */
+        .light-mode { 
+            --bg-color: #ffffff; 
+            --text-color: #000000; 
+            --inactive-color: #aaaaaa;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-family: 'Courier New', Courier, monospace;
+            transition: background var(--transition);
+            overflow: hidden;
+        }
+
+        header {
+            width: 100%; padding: 2.5rem 4rem;
+            display: flex; align-items: center; box-sizing: border-box;
+            z-index: 100;
+        }
+        .header-logo { width: 60px; margin-right: 50px; flex-shrink: 0; cursor: pointer; }
+        nav { display: flex; justify-content: space-between; flex-grow: 1; max-width: 1100px; }
+        nav a { color: var(--text-color); text-decoration: none; font-size: 1.2rem; }
+
+        main { display: flex; flex: 1; padding: 0 4rem; position: relative; }
+
+        .sidebar { width: 150px; display: flex; flex-direction: column; gap: 5px; padding-top: 20px; }
+        .lang-toggle { 
+            font-size: 1.5rem; 
+            transition: color var(--transition); 
+            cursor: pointer; 
+            user-select: none;
+        }
+        .lang-toggle.active { color: var(--text-color); }
+        .lang-toggle.inactive { color: var(--inactive-color); }
+
+        .content-area { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; padding-left: 50px; }
+
+        /* TYPOGRAPHY */
+        .romance-title { font-size: 3.5rem; font-weight: bold; text-transform: uppercase; margin-bottom: 2rem; line-height: 1; }
+        .title-offset { margin-left: 280px; display: block; }
+
+        .lyrics-container { font-size: 1.4rem; line-height: 1.6; max-width: 900px; }
+        .lyric-line { display: block; margin-bottom: 5px; }
+        .indent-1 { margin-left: 140px; }
+        .indent-2 { margin-left: 80px; }
+        .stanza { margin-bottom: 2rem; }
+
+        /* FOOTER */
+        footer {
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3rem;
+            gap: 40px;
+        }
+        .nav-arrow { cursor: pointer; text-decoration: none; color: var(--text-color); }
+
+        .lang-content { display: none; }
+        .lang-content.visible { display: block; }
+
+        /* Special layout for Ladino split columns */
+        .split-stanza { display: flex; gap: 50px; }
+    </style>
+</head>
+<body class="light-mode">
+
+    <header>
+        <div class="header-logo" id="universal-toggle">
+            <svg viewBox="0 0 100 120">
+                <path d="M50 10 V 110 H 10 V 50 A 40 40 0 0 1 50 10" fill="none" stroke="currentColor" stroke-width="5" />
+                <path d="M50 10 V 110 H 90 V 50 A 40 40 0 0 0 50 10" fill="currentColor" />
+            </svg>
+        </div>
+        <nav>
+            <a href="index.html">početna</a>
+            <a href="uvod.html">uvod</a>
+            <a href="sadrzaj.html">sadržaj</a>
+            <a href="random.html">nasumična romansa</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="sidebar">
+            <span class="lang-toggle active" id="label-bos">bosanski</span>
+            <span class="lang-toggle inactive" id="label-lad">ladino</span>
+        </div>
+
+        <div class="content-area">
+            <div id="content-bos" class="lang-content visible">
+                <h1 class="romance-title">O KAKO JE <span class="title-offset">LIJEPA NEVJESTA</span></h1>
+                <div class="lyrics-container">
+                    <div class="stanza">
+                        <span class="lyric-line">Kakva svjetlost lijepa mlada</span>
+                        <span class="lyric-line">Nek je sretna sto godina</span>
+                        <span class="lyric-line">Dođi mlada uživajmo zaigrajmo</span>
+                    </div>
+                    <div class="stanza">
+                        <span class="lyric-line indent-1">Sa svekrvom baš sam zadovoljna</span>
+                        <span class="lyric-line indent-1">Nek zaigra hoću da je vidim.</span>
+                    </div>
+                    <div class="stanza">
+                        <span class="lyric-line">Sa snahom baš zadovoljna sam</span>
+                        <span class="lyric-line">Nek zaigra hoću da je vidim</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="content-lad" class="lang-content">
+                <h1 class="romance-title">JO PASI <span class="title-offset">POR LA TU PUERTA</span></h1>
+                <div class="lyrics-container">
+                    <div class="stanza split-stanza">
+                        <div>
+                            <span class="lyric-line">Ja pasi por la tu puerta</span>
+                            <span class="lyric-line">Tu stavaz en la guerta</span>
+                            <span class="lyric-line">Te saludi tu te fuites</span>
+                            <span class="lyric-line">Esto no me se arisenta</span>
+                        </div>
+                        <div>
+                            <span class="lyric-line">Oh kerida ten piadad</span>
+                            <span class="lyric-line">Ke so jo muj mansevo</span>
+                            <span class="lyric-line">Por dormir, por arepozar</span>
+                            <span class="lyric-line">La noče kajo sin shuenjo</span>
+                        </div>
+                    </div>
+                    <div class="stanza">
+                        <span class="lyric-line">Oi me ami</span>
+                        <span class="lyric-line">Sjente me ami</span>
+                        <span class="lyric-line">Deša a tu madre</span>
+                        <span class="lyric-line">I ven kon mi</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <a href="2.html" class="nav-arrow">&lt;</a>
+        <span>3</span>
+        <a href="4.html" class="nav-arrow">&gt;</a>
+    </footer>
+
+    <script>
+        const universalToggle = document.getElementById('universal-toggle');
+        const labelBos = document.getElementById('label-bos');
+        const labelLad = document.getElementById('label-lad');
+        const body = document.body;
+        const contentBos = document.getElementById('content-bos');
+        const contentLad = document.getElementById('content-lad');
+
+        function updateDisplay(targetMode) {
+            if (targetMode === 'bosanski') {
+                body.classList.add('light-mode');
+                labelBos.className = 'lang-toggle active';
+                labelLad.className = 'lang-toggle inactive';
+                contentBos.classList.add('visible');
+                contentLad.classList.remove('visible');
+            } else {
+                body.classList.remove('light-mode');
+                labelLad.className = 'lang-toggle active';
+                labelBos.className = 'lang-toggle inactive';
+                contentLad.classList.add('visible');
+                contentBos.classList.remove('visible');
+            }
+        }
+
+        universalToggle.onclick = () => {
+            const currentMode = body.classList.contains('light-mode') ? 'ladino' : 'bosanski';
+            updateDisplay(currentMode);
+        };
+
+        labelBos.onclick = () => updateDisplay('bosanski');
+        labelLad.onclick = () => updateDisplay('ladino');
+    </script>
+</body>
+</html>

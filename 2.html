@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otvori Škure Te - Sefardske Romanse</title>
+    <style>
+        :root { 
+            --bg-color: #000000; 
+            --text-color: #ffffff; 
+            --inactive-color: #555555;
+            --transition: 0.3s ease;
+        }
+        /* Light Mode = Bosanski | Dark Mode = Ladino */
+        .light-mode { 
+            --bg-color: #ffffff; 
+            --text-color: #000000; 
+            --inactive-color: #aaaaaa;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-family: 'Courier New', Courier, monospace;
+            transition: background var(--transition);
+            overflow: hidden;
+        }
+
+        /* HEADER */
+        header {
+            width: 100%; padding: 2.5rem 4rem;
+            display: flex; align-items: center; box-sizing: border-box;
+            z-index: 100;
+        }
+        .header-logo { width: 60px; margin-right: 50px; flex-shrink: 0; cursor: pointer; }
+        nav { display: flex; justify-content: space-between; flex-grow: 1; max-width: 1100px; }
+        nav a { color: var(--text-color); text-decoration: none; font-size: 1.2rem; line-height: 1.2; }
+
+        /* MAIN CONTENT */
+        main { display: flex; flex: 1; padding: 0 4rem; position: relative; }
+
+        .sidebar {
+            width: 150px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            padding-top: 20px;
+        }
+        .lang-toggle { 
+            font-size: 1.5rem; 
+            transition: color var(--transition); 
+            cursor: pointer; 
+            user-select: none;
+        }
+        .lang-toggle.active { color: var(--text-color); }
+        .lang-toggle.inactive { color: var(--inactive-color); }
+
+        .content-area {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 50px;
+        }
+
+        /* TITLE LAYOUT */
+        .romance-title {
+            font-size: 3.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            line-height: 1;
+        }
+        .title-offset { margin-left: 150px; display: block; }
+
+        /* LYRICS LAYOUT */
+        .lyrics-container { font-size: 1.4rem; line-height: 1.6; max-width: 800px; }
+        .lyric-line { display: block; margin-bottom: 5px; }
+        .indent-1 { margin-left: 40px; }
+        .indent-2 { margin-left: 80px; }
+        .stanza { margin-bottom: 3rem; }
+
+        /* FOOTER NAVIGATION */
+        footer {
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3rem;
+            gap: 40px;
+        }
+        .nav-arrow { cursor: pointer; text-decoration: none; color: var(--text-color); }
+
+        /* VISIBILITY TOGGLE */
+        .lang-content { display: none; }
+        .lang-content.visible { display: block; }
+    </style>
+</head>
+<body class="light-mode"> <header>
+        <div class="header-logo" id="universal-toggle">
+            <svg viewBox="0 0 100 120">
+                <path d="M50 10 V 110 H 10 V 50 A 40 40 0 0 1 50 10" fill="none" stroke="currentColor" stroke-width="5" />
+                <path d="M50 10 V 110 H 90 V 50 A 40 40 0 0 0 50 10" fill="currentColor" />
+            </svg>
+        </div>
+        <nav>
+            <a href="index.html">početna</a>
+            <a href="uvod.html">uvod</a>
+            <a href="sadrzaj.html">sadržaj</a>
+            <a href="random.html">nasumična<br>romansa</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="sidebar">
+            <span class="lang-toggle active" id="label-bos">bosanski</span>
+            <span class="lang-toggle inactive" id="label-lad">ladino</span>
+        </div>
+
+        <div class="content-area">
+            <div id="content-bos" class="lang-content visible">
+                <h1 class="romance-title">OTVORI <span class="title-offset">ŠKURE TE</span></h1>
+                <div class="lyrics-container">
+                    <div class="stanza">
+                        <span class="lyric-line">Otvori škure te</span>
+                        <span class="lyric-line">Prozor otvori tvoj</span>
+                        <span class="lyric-line">Da vidim lišce crno ti</span>
+                        <span class="lyric-line">Bogu dušu ja dao bih.</span>
+                    </div>
+                    <div class="stanza">
+                        <span class="lyric-line indent-2">Kraj tvojih vrata prođoh ja</span>
+                        <span class="lyric-line">Zatvorena ih nađoh ja</span>
+                        <span class="lyric-line indent-2">Ključaonicu sam poljubio</span>
+                        <span class="lyric-line">Ko da sam ti lice ljubio.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="content-lad" class="lang-content">
+                <h1 class="romance-title">UNA NOČE <span class="title-offset">AL LUNAR</span></h1>
+                <div class="lyrics-container">
+                    <div class="stanza">
+                        <span class="lyric-line">Una noče al lunar</span>
+                        <span class="lyric-line">Jo sali a kaminar</span>
+                        <span class="lyric-line">Kaminando i buškando</span>
+                        <span class="lyric-line">Onde se topa la mar.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <a href="1.html" class="nav-arrow">&lt;</a>
+        <span>2</span>
+        <a href="3.html" class="nav-arrow">&gt;</a>
+    </footer>
+
+    <script>
+        const universalToggle = document.getElementById('universal-toggle');
+        const labelBos = document.getElementById('label-bos');
+        const labelLad = document.getElementById('label-lad');
+        const body = document.body;
+        const contentBos = document.getElementById('content-bos');
+        const contentLad = document.getElementById('content-lad');
+
+        function updateDisplay(targetMode) {
+            if (targetMode === 'bosanski') {
+                body.classList.add('light-mode');
+                labelBos.className = 'lang-toggle active';
+                labelLad.className = 'lang-toggle inactive';
+                contentBos.classList.add('visible');
+                contentLad.classList.remove('visible');
+            } else {
+                body.classList.remove('light-mode');
+                labelLad.className = 'lang-toggle active';
+                labelBos.className = 'lang-toggle inactive';
+                contentLad.classList.add('visible');
+                contentBos.classList.remove('visible');
+            }
+        }
+
+        // Cycle through modes via logo
+        universalToggle.onclick = () => {
+            const currentMode = body.classList.contains('light-mode') ? 'ladino' : 'bosanski';
+            updateDisplay(currentMode);
+        };
+
+        // Switch via text click
+        labelBos.onclick = () => updateDisplay('bosanski');
+        labelLad.onclick = () => updateDisplay('ladino');
+    </script>
+</body>
+</html>
