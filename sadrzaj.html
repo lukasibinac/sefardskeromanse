@@ -1,105 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>sadržaj - sefardske romanse</title>
     <style>
-        /* 1. DEFINE CUSTOM FONTS */
         @font-face {
             font-family: 'NarkissAsaf';
             src: url('Narkiss Asaf Mono Regular.ttf') format('truetype');
         }
 
-        @font-face {
-            font-family: 'NarkissYair';
-            src: url('Narkiss Yair Regular.ttf') format('truetype');
-        }
-
-        :root { --bg-color: #000; --text-color: #fff; --transition: 0.3s ease; }
-        .light-mode { --bg-color: #f0f0f0; --text-color: #000; }
-
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            background-color: #000000;
             margin: 0;
-            height: 100vh;
             display: flex;
             flex-direction: column;
-            /* EVERYTHING ON THIS PAGE IS NARKISS ASAF */
-            font-family: 'NarkissAsaf', monospace;
-            text-transform: lowercase;
-            transition: background var(--transition);
+            height: 100vh;
             overflow: hidden;
+            font-family: 'NarkissAsaf', monospace;
         }
 
         header {
             width: 100%; padding: 2.5rem 4rem;
             display: flex; align-items: center; box-sizing: border-box;
-            position: relative; z-index: 100;
+            position: absolute; top: 0; z-index: 100;
         }
 
-        .header-logo { width: 60px; margin-right: 50px; flex-shrink: 0; cursor: pointer; }
+        .header-logo { width: 60px; margin-right: 50px; flex-shrink: 0; cursor: pointer; color: white; }
         
         nav { display: flex; justify-content: space-between; flex-grow: 1; max-width: 1100px; }
         nav a { 
-            color: var(--text-color); 
+            color: white; 
             text-decoration: none; 
             font-size: 1.2rem; 
-            font-family: 'NarkissAsaf', monospace;
-        }
-
-        main { 
-            flex-grow: 1; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center;
-            margin-top: -80px; /* Shifts map up to prevent bottom cutoff */
-        }
-
-        .svg-wrapper { 
-            width: 100vw; 
-            height: 90vh; 
-            display: flex;
-            justify-content: center;
-        }
-
-        svg { width: auto; height: 100%; }
-
-        .key-item { cursor: pointer; fill: #fff; transition: fill var(--transition); }
-        
-        #key-blue:hover { fill: #002fc8; }
-        #key-red:hover { fill: #d80000; }
-        #key-green:hover { fill: #39b54a; }
-        #key-brown:hover { fill: #332a23; }
-
-        .hover-text {
-            fill: var(--text-color);
-            font-family: 'NarkissAsaf', monospace;
-            font-size: 62px; 
-            font-weight: normal;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity var(--transition);
             text-transform: lowercase;
         }
 
-        /* Show text on hover */
-        #key-blue:hover ~ .text-blue,
-        #key-red:hover ~ .text-red,
-        #key-green:hover ~ .text-green,
-        #key-brown:hover ~ .text-brown {
+        .svg-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        svg {
+            max-width: 90%;
+            max-height: 85vh;
+        }
+
+        /* DEFAULT STATE: Keys are white, Text is hidden */
+        .key-shape {
+            fill: #ffffff;
+            transition: fill 0.3s ease;
+        }
+        .song-text {
+            opacity: 0;
+            fill: #ffffff;
+            font-family: 'NarkissAsaf', monospace;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        /* HOVER COLORS (Restored from your original classes) */
+        .romance-link:hover .p-blue { fill: #002fc8; }      /* U osvit dana */
+        .romance-link:hover .p-red { fill: #d80000; }       /* Otvori škure te */
+        .romance-link:hover .p-green { fill: #39b54a; }     /* O kako je lijepa... */
+        .romance-link:hover .p-brown { fill: #332a23; }     /* Kad umrem */
+        .romance-link:hover .p-darkblue { fill: #2a519e; }  /* Pjesma zatvorenika */
+        .romance-link:hover .p-lightblue { fill: #4c8bb2; } /* Ja sam zgodan... */
+        .romance-link:hover .p-mutedred { fill: #b0584a; }  /* Prođoh kraj... */
+
+        .romance-link:hover .song-text {
             opacity: 1;
         }
 
-        .center-shape { fill: none; stroke: var(--text-color); stroke-width: 8px; }
+        .cls-18 { fill: none; stroke: #fff; stroke-miterlimit: 10; stroke-width: 9px; }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="header-logo" id="theme-toggle">
-            <svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+        <div class="header-logo" onclick="location.href='index.html'">
+            <svg viewBox="0 0 100 120">
                 <path d="M50 10 V 110 H 10 V 50 A 40 40 0 0 1 50 10" fill="none" stroke="currentColor" stroke-width="5" />
                 <path d="M50 10 V 110 H 90 V 50 A 40 40 0 0 0 50 10" fill="currentColor" />
             </svg>
@@ -108,29 +90,54 @@
             <a href="index.html">početna</a>
             <a href="uvod.html">uvod</a>
             <a href="sadrzaj.html" style="text-decoration: underline;">sadržaj</a>
-            <a href="javascript:void(0)" onclick="location.href = Math.floor(Math.random() * 7) + 1 + '.html';">nasumična<br>romansa</a></nav>
+            <a href="javascript:void(0)" onclick="location.href = Math.floor(Math.random() * 7) + 1 + '.html';">nasumična romansa</a>
+        </nav>
     </header>
 
-    <main>
-        <div class="svg-wrapper">
-            <svg viewBox="0 0 1920 1080">
-                <path class="center-shape" d="M1093.63,396.7c3.91,39.67,7.82,79.34,11.73,119.01-39.11,47.49-78.22,94.98-117.33,142.47-41.9,8.94-83.81,17.88-125.71,26.82-54.2-32.41-108.39-64.81-162.59-97.22-1.12-51.4-2.23-102.8-3.35-154.2,25.14-39.11,50.28-78.22,75.43-117.33,81.01,5.03,162.03,10.06,243.04,15.09,26.26,21.79,52.52,43.58,78.78,65.37Z"/>
+    <div class="svg-container">
+        <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1946.35 1089.77">
+            <rect width="1946.35" height="1089.77" fill="black"/>
+            
+            <path class="cls-18" d="M1103.39,405.28c3.81,38.63,7.62,77.26,11.43,115.88-38.08,46.24-76.17,92.49-114.25,138.73-40.8,8.7-81.61,17.41-122.41,26.11-52.77-31.56-105.55-63.11-158.32-94.67-1.09-50.05-2.18-100.11-3.26-150.16,24.48-38.08,48.97-76.17,73.45-114.25,78.89,4.9,157.78,9.79,236.66,14.69,25.57,21.22,51.14,42.44,76.71,63.65Z"/>
 
-                <path id="key-blue" class="key-item" onclick="location.href='1.html'" d="M1398.97,247.49l.15,16.43c-1.28,2.04-2.56,4.08-3.84,6.13.98,2.63,1.95,5.25,2.93,7.88,2.26-.15,4.51-.3,6.77-.46l10.8,27.7,5.78,9.74,2.97,15.83-4.19,15.98-37.81,5.78-57.52,1.83-101.37,8.83-9.57,5.78c-5.85-.16-11.69-.33-17.54-.49-8.77.21-17.54.42-26.31.63-6.51-.49-13.01-.99-19.52-1.48-3.35.27-6.7.53-10.04.8-.78.82-1.56,1.64-2.34,2.45-1.84,3.32-3.68,6.64-5.52,9.97l-7.76,19.63-15.07,21.46-14.15,10.04-36.07,3.65-24.2-10.04-16.89-15.52-6.39-20.54,1.83-24.65,2.28-45.2,18.26-24.65c4.87-4.22,9.74-8.45,14.61-12.67,7.36-2,14.71-4.01,22.07-6.01,5.33.25,10.65.51,15.98.76,8.32,4.45,16.64,8.9,24.96,13.35,5.73,10.13,11.46,20.26,17.2,30.4,3.7,2.03,7.41,4.06,11.11,6.09,7.61-1.51,15.22-3.02,22.83-4.53l22.37-5.02,24.65-1.83,5.02,4.11,138.78-14.15,1.83-6.39-10.04-5.93-10.04-26.93,5.93-19.63,11.87-2.74,41.54-3.2,3.65,6.85Z"/>
-                <path id="key-red" class="key-item" onclick="location.href='2.html'" d="M1521.01,436.99l-45.25-6.73-8.87,9.78c3.83,2.53,7.66,5.06,11.49,7.59-5.05,17.14-10.11,34.28-15.16,51.42-50.14-5.1-100.28-10.19-150.42-15.29l-9.17-6.11-73.68-3.67-9.48-6.42-5.2,2.45-7.95-1.83-6.73-32.41-13.45-16.51-13.15-10.09-35.77-1.83-28.74,17.73-18.96,27.21-6.73,33.32-1.22,22.32,6.73,29.35,20.48,12.54,33.94,8.25,34.55-12.08,16.66-20.03,6.27-14.52,82.09,10.85,27.97,1.07,199.64,22.93,9.78-3.36,6.73-18.65-5.04-17.27-1.38-36.54-18.34-3.67-5.5-2.75-2.45-10.09,15.29,4.43,10.4-5.96,1.22-6.11-.61-9.32Z"/>
-                <polygon id="key-green" class="key-item" onclick="location.href='3.html'" points="1083.95 554.79 1106.15 570.02 1113.77 592.59 1108.38 615.38 1101.91 633.18 1108.34 641.18 1122.45 639.79 1129.18 649.6 1129.62 655.98 1144.31 658.22 1151.19 672.6 1308.99 781.39 1354.94 709.28 1409.1 744.2 1397.56 760.8 1368.86 742.6 1365.75 751.84 1393.14 771.68 1382.06 788.5 1350.66 771.3 1345.35 782.89 1373.7 804.3 1382.01 833.93 1395.06 848.33 1388.72 863.38 1378.69 870.57 1135.52 701.9 1122.98 702.32 1112.44 694.69 1107.32 685.05 1098.66 685.57 1084.94 671.42 1078 662.07 1063.99 673.05 1019.7 686.43 978.46 668.65 970.16 619.39 1028.6 565.35 1083.95 554.79"/>
-                <path id="key-brown" class="key-item" onclick="location.href='4.html'" d="M1005.47,962.83l2.9-16.22-1.46-20.32-2.94-18.29-8.76-5.34-19.32,3.62-.84,10.38c.22,1.07.45,2.15.67,3.22-1.7,1-3.4,2.01-5.09,3.01-1.27-3.23-2.55-6.45-3.82-9.68l-4.05-2.96-12.65-.22-4.88-1.52-24.09-133.56-2.37-4.23,1.52-4.88-1.37-6.53-2.82-2.89.69-3.44-4.02-29.77,5.26-4.54,23.08-10.46c5.98-6.17,11.96-12.33,17.94-18.5,1.07-9.74,2.14-19.47,3.21-29.21-4.45-7.03-8.9-14.07-13.36-21.1-6.5-4.07-13.01-8.14-19.51-12.21,0,0-24.38-5.02-23.37-5.3s-34.15,3.86-34.15,3.86l-29.51,13.97-17.76,24.32-5.37,26.09,21.16,31.07,40.64,7.1,6.65,34.47.34,7.22,1.23,4.54,32.77,210.39,9.33,35.37,8.75,3.31,19.69-4.26,5.48-4.74-5.85-38.48,3.33-4.69,8.98-.82,2.89-1.33,1.91-11.89,5.29-1.44c.92,3.63,1.84,7.26,2.76,10.89,1.24.67,2.47,1.34,3.71,2.02,3.37-.15,6.75-.3,10.12-.45,2.34-1.87,4.67-3.74,7.01-5.6Z"/>
+            <a href="1.html" class="romance-link">
+                <path class="key-shape p-blue" d="M1399.2,221.87l.15,16c-1.25,1.99-2.49,3.98-3.74,5.96.95,2.56,1.9,5.11,2.85,7.67,2.2-.15,4.4-.3,6.59-.44l10.52,26.97,5.63,9.48,2.89,15.41-4.08,15.56-36.82,5.63-56.01,1.78-98.71,8.59-9.32,5.63c-5.69-.16-11.39-.32-17.08-.48-8.54.2-17.08.41-25.62.61-6.33-.48-12.67-.96-19-1.44-3.26.26-6.52.52-9.78.78-.76.8-1.52,1.59-2.28,2.39-1.79,3.24-3.58,6.47-5.37,9.71l-7.56,19.12-14.67,20.89-13.78,9.78-35.12,3.56-23.56-9.78-16.45-15.11-6.22-20,1.78-24.01,2.22-44.01,17.78-24.01c4.74-4.11,9.48-8.22,14.23-12.34,7.16-1.95,14.32-3.9,21.49-5.85,5.19.25,10.37.49,15.56.74,8.1,4.33,16.2,8.67,24.3,13,5.58,9.87,11.16,19.73,16.74,29.6,3.61,1.98,7.21,3.95,10.82,5.93,7.41-1.47,14.82-2.94,22.23-4.41l21.78-4.89,24.01-1.78,4.89,4,135.14-13.78,1.78-6.22-9.78-5.78-9.78-26.23,5.78-19.12,11.56-2.67,40.45-3.11,3.56,6.67Z"/>
+                <text class="song-text" style="font-size:66.45px" transform="translate(1156.93 392.51) rotate(-3.91) scale(.97 1)">u osvit dana</text>
+            </a>
 
-                <text class="hover-text text-blue" transform="translate(1180 340) rotate(-5)">u osvit dana</text>
-                <text class="hover-text text-red" transform="translate(1250 560) rotate(20)">otvori škure te</text>
-                <text class="hover-text text-green" transform="translate(1100 780) rotate(35)">o kako je lijepa nevjesta</text>
-                <text class="hover-text text-brown" transform="translate(650 980) rotate(25)">majko moja kad umrem</text>
-            </svg>
-        </div>
-    </main>
+            <a href="2.html" class="romance-link">
+                <path class="key-shape p-red" d="M1518.46,557.35l-40.7-18.11-10.87,6.87c2.93,3.37,5.87,6.75,8.8,10.12-9.21,14.76-18.42,29.52-27.64,44.28-45.71-17.86-91.42-35.72-137.13-53.58l-7.01-8.13-68.17-22.66-7.22-8.5-5.51.94-6.98-3.79,2.14-32.16-8.31-19-9.7-12.89-33.08-11.05-31.59,9.14-24.88,20.58-15,29.51-6.97,20.62-1.35,29.29,15.95,17.1,29.69,16.6,35.56-2.32,20.86-14.44,9.67-11.99,74.18,31.6,25.97,8.3,181.32,73.59,10.06-.6,11.18-15.74-.23-17.52,8.24-34.64-16.25-8.23-4.45-4.02.34-10.1,13.19,8.15,11.31-2.88,2.74-5.42,1.86-8.91Z"/>
+                <text class="song-text" style="font-size:66.45px" transform="translate(1177.4 605.11) rotate(21.94) scale(.97 1)">otvori škure te</text>
+            </a>
 
-    <script>
-        document.getElementById('theme-toggle').onclick = () => document.body.classList.toggle('light-mode');
-    </script>
+            <a href="3.html" class="romance-link">
+                <polygon class="key-shape p-green" points="1095.49 575.22 1117.11 590.05 1124.53 612.03 1119.28 634.22 1112.98 651.55 1119.25 659.34 1132.98 657.99 1139.53 667.54 1139.97 673.75 1154.27 675.94 1160.97 689.94 1314.63 795.87 1359.38 725.66 1412.11 759.66 1400.88 775.83 1372.93 758.1 1369.9 767.1 1396.57 786.42 1385.79 802.79 1355.21 786.05 1350.03 797.34 1377.64 818.19 1385.73 847.04 1398.44 861.06 1392.27 875.72 1382.5 882.72 1145.71 718.47 1133.5 718.88 1123.24 711.45 1118.25 702.06 1109.82 702.57 1096.46 688.79 1089.7 679.69 1076.06 690.38 1032.93 703.4 992.77 686.09 984.69 638.12 1041.59 585.5 1095.49 575.22"/>
+                <text class="song-text" style="font-size:57.38px" transform="translate(1058.63 725.16) rotate(34.5) scale(.97 1)">o kako je lijepa nevjesta</text>
+            </a>
+
+            <a href="4.html" class="romance-link">
+                <path class="key-shape p-brown" d="M1017.55,956.56l2.83-15.8-1.42-19.78-2.86-17.81-8.53-5.2-18.81,3.53-.81,10.11c.22,1.05.44,2.09.65,3.14-1.65.98-3.31,1.95-4.96,2.93-1.24-3.14-2.48-6.28-3.72-9.42l-3.95-2.88-12.32-.21-4.75-1.48-23.46-130.06-2.31-4.12,1.48-4.75-1.33-6.36-2.74-2.81.67-3.35-3.92-28.99,5.13-4.42,22.48-10.19c5.82-6,11.65-12.01,17.47-18.01,1.04-9.48,2.09-18.96,3.13-28.44-4.34-6.85-8.67-13.7-13.01-20.55-6.33-3.96-12.67-7.92-19-11.89,0,0-23.74-4.89-22.75-5.16s-33.25,3.76-33.25,3.76l-28.73,13.6-17.3,23.68-5.23,25.41,20.61,30.26,39.58,6.91,6.48,33.57.33,7.03,1.2,4.42,31.91,204.87,9.09,34.44,8.52,3.22,19.17-4.15,5.34-4.61-5.69-37.47,3.24-4.57,8.75-.79,2.81-1.29,1.86-11.58,5.16-1.4c.89,3.54,1.79,7.07,2.68,10.61,1.2.65,2.41,1.31,3.61,1.96,3.29-.15,6.57-.29,9.86-.44,2.27-1.82,4.55-3.64,6.82-5.46Z"/>
+                <text class="song-text" style="font-size:49.9px" transform="translate(698.33 928.16) rotate(28.3) scale(.97 1)">majko moja</text>
+                <text class="song-text" style="font-size:49.9px" transform="translate(985.23 1058.99) rotate(-16.7) scale(.97 1)">kad umrem</text>
+            </a>
+
+            <a href="5.html" class="romance-link">
+                <path class="key-shape p-darkblue" d="M744.71,687.27c12.94,5.35,25.89,10.7,38.83,16.05,9.86-2.46,19.72-4.92,29.58-7.39l25.57-30.62-.08-44.35-26.21-46.06-45.1-21.76-39.07,10.38-24.65,26.02-.54,39.44,11.85,26.92-59.85,55.36-13.36,20.62-153.78,156.86,8.9,19.32,12.27,10.42,9.69-2.21,29.7,22.19,17.66-18.16,5.03.37,7.73,6.01-18.21,17.74,8.53,16.37,11.71-5.96,28.51-30.99-3.07-11.24-44.59-37.6,1.37-3.66,105.64-110.11,4.6-1.74,7.11-4.22,2.72-3.5,6.01-2.42,5.17-10.45c12.51-12.73,25.03-25.45,37.54-38.18,1.9-1.27,3.8-2.53,5.71-3.8l2.32-5.96c1.58-1.23,3.16-2.46,4.74-3.7Z"/>
+                <text class="song-text" style="font-size:66.45px" transform="translate(353.49 886.93) rotate(-42.35) scale(.97 1)">pjesma zatvorenika</text>
+            </a>
+
+            <a href="6.html" class="romance-link">
+                <polygon class="key-shape p-lightblue" points="320.5 241.13 316.13 227.15 318.94 218.95 336.44 211.63 371.49 218.64 384.85 169.94 393.11 165.28 431.87 176.06 424.98 225.32 445.77 181.66 487.28 191.71 477.16 240.69 686.38 298.22 699.36 294.35 747.55 309.19 772.15 271.42 785.81 260.7 823.53 262.38 853.5 281.81 868.8 329.51 847.39 388.35 801.13 424.95 763.72 416.3 738.75 379.85 741.4 345.38 685.58 334.58 677.41 328.04 320.5 241.13"/>
+                <text class="song-text" style="font-size:66.45px" transform="translate(52.2 132.66) rotate(3.49) scale(.97 1)">ja sam zgodan i ti zgodna</text>
+            </a>
+
+            <a href="7.html" class="romance-link">
+                <polygon class="key-shape p-mutedred" points="281.77 547.32 307.86 554.13 591.62 499.4 601.23 505.77 622.7 502.68 637.29 505.51 653.28 501.66 666.2 498.34 696.44 532.76 742.23 533.99 766.17 507.13 758.77 464.16 727.55 420.55 692.43 408.61 668.04 406.74 649.2 425.79 649.59 456.96 641.55 460.41 628.26 454.56 608.59 458.92 598.08 463.52 583.93 467.42 577.08 472.13 394.91 497.8 383.81 455.95 377.18 452.72 317 463.94 310.48 479.04 315.95 503.02 313.74 517.01 294.24 515.27 281.58 531.43 281.77 547.32"/>
+                <text class="song-text" style="font-size:66.45px" transform="translate(174.99 450.31) rotate(-11.08) scale(.97 1)">prođoh kraj tvoje kapije</text>
+            </a>
+
+        </svg>
+    </div>
+
 </body>
 </html>
