@@ -35,10 +35,10 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
-            /* DEFAULT TO TEXT FONT */
             font-family: 'NarkissYair', sans-serif;
             transition: background var(--transition);
-            overflow: hidden;
+            /* Allow scrolling only if lyrics are very long */
+            overflow: hidden; 
         }
 
         header {
@@ -58,7 +58,7 @@
             text-transform: lowercase;
         }
 
-        main { display: flex; flex: 1; padding: 0 4rem; position: relative; }
+        main { display: flex; flex: 1; padding: 0 4rem; position: relative; overflow: hidden; }
 
         .sidebar {
             width: 150px;
@@ -79,29 +79,36 @@
             flex-direction: column;
             justify-content: center;
             padding-left: 50px;
+            height: 100%;
         }
 
-        /* TITLE STYLE - Narkiss Asaf */
+        /* TITLE STYLE */
         .romance-title {
             font-family: 'NarkissAsaf', monospace;
             font-size: 3.5rem;
             font-weight: normal;
             text-transform: lowercase;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             line-height: 1;
         }
         .title-offset { margin-left: 150px; display: block; }
 
-        /* LYRICS STYLE - Narkiss Yair */
+        /* LYRICS STYLE */
         .lyrics-container { 
             font-family: 'NarkissYair', sans-serif;
-            font-size: 1.4rem; 
-            line-height: 1.6; 
+            font-size: 1.3rem; 
+            line-height: 1.4; 
             max-width: 800px; 
+            max-height: 60vh;
+            overflow-y: auto;
+            padding-right: 20px;
         }
-        .lyric-line { display: block; margin-bottom: 5px; }
-        .indent-2 { margin-left: 80px; }
-        .stanza { margin-bottom: 3rem; }
+        /* Hide scrollbar but keep functionality */
+        .lyrics-container::-webkit-scrollbar { width: 0px; }
+
+        .lyric-line { display: block; margin-bottom: 2px; }
+        .indent-2 { margin-left: 60px; }
+        .stanza { margin-bottom: 2rem; }
 
         footer {
             height: 100px;
@@ -130,7 +137,7 @@
             <a href="index.html">početna</a>
             <a href="uvod.html">uvod</a>
             <a href="sadrzaj.html">sadržaj</a>
-            <a href="random.html">nasumična<br>romansa</a>
+            <a href="javascript:void(0)" onclick="location.href = Math.floor(Math.random() * 4) + 1 + '.html';">nasumična<br>romansa</a>
         </nav>
     </header>
 
@@ -146,17 +153,51 @@
                 <div class="lyrics-container">
                     <div class="stanza">
                         <span class="lyric-line">Otvori škure te</span>
-                        <span class="lyric-line indent-2">Svijetli mjesecu</span>
+                        <span class="lyric-line indent-2">Prozor otvori tvoj</span>
+                        <span class="lyric-line">Da vidim lišce crno ti</span>
+                        <span class="lyric-line indent-2">Bogu dušu ja dao bih.</span>
+                    </div>
+                    <div class="stanza">
+                        <span class="lyric-line">Kraj tvojih vrata prođoh ja</span>
+                        <span class="lyric-line indent-2">Zatvorena ih nađoh ja</span>
+                        <span class="lyric-line">Ključaonicu sam poljubio</span>
+                        <span class="lyric-line indent-2">Ko da sam ti lice ljubio.</span>
+                    </div>
+                    <div class="stanza">
+                        <span class="lyric-line">Ako me zaboraviš</span>
+                        <span class="lyric-line indent-2">Ljepotu izgubićeš</span>
+                        <span class="lyric-line">Momka više prevariti nećeš</span>
+                        <span class="lyric-line indent-2">U mojim rukama umrijećeš.</span>
                     </div>
                 </div>
             </div>
 
             <div id="content-lad" class="lang-content">
-                <h1 class="romance-title">abra las <span class="title-offset">puertas</span></h1>
+                <h1 class="romance-title">una noče <span class="title-offset">al lunar</span></h1>
                 <div class="lyrics-container">
                     <div class="stanza">
-                        <span class="lyric-line">Abra las puertas luzero</span>
-                        <span class="lyric-line">K'el dia ya k'ere amaneser</span>
+                        <span class="lyric-line">Una noče al lunar</span>
+                        <span class="lyric-line indent-2">Jo sali a kaminar</span>
+                        <span class="lyric-line">Kaminando i buškando</span>
+                        <span class="lyric-line indent-2">Onde se topa la mar.</span>
+                    </div>
+                    <div class="stanza">
+                        <span class="lyric-line">Los ožos mi si abufarun</span>
+                        <span class="lyric-line indent-2">Di tanto mirar a la mar</span>
+                        <span class="lyric-line">Vapores ja van i vjenen</span>
+                        <span class="lyric-line indent-2">Letras para mi no aj</span>
+                    </div>
+                    <div class="stanza">
+                        <span class="lyric-line">Letras alegras resiviremos</span>
+                        <span class="lyric-line indent-2">Ilaz karas mos veremos</span>
+                        <span class="lyric-line">En un nido durmiremos</span>
+                        <span class="lyric-line indent-2">Presto mos aduntaremos</span>
+                    </div>
+                    <div class="stanza">
+                        <span class="lyric-line">Madre mija, la mi madre</span>
+                        <span class="lyric-line indent-2">Un suenjo me sonjava</span>
+                        <span class="lyric-line">Un suenjo me sonjava</span>
+                        <span class="lyric-line indent-2">Ke la gera s'eskapava</span>
                     </div>
                 </div>
             </div>

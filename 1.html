@@ -35,7 +35,6 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
-            /* DEFAULT TO TEXT FONT */
             font-family: 'NarkissYair', sans-serif;
             transition: background var(--transition);
             overflow: hidden;
@@ -81,7 +80,6 @@
             padding-left: 50px;
         }
 
-        /* TITLE STYLE - Narkiss Asaf */
         .romance-title {
             font-family: 'NarkissAsaf', monospace;
             font-size: 3.5rem;
@@ -92,16 +90,16 @@
         }
         .title-offset { margin-left: 150px; display: block; }
 
-        /* LYRICS STYLE - Narkiss Yair */
         .lyrics-container { 
             font-family: 'NarkissYair', sans-serif;
             font-size: 1.4rem; 
-            line-height: 1.6; 
+            line-height: 1.4; 
             max-width: 800px; 
+            overflow-y: auto; /* Just in case lyrics are long */
         }
-        .lyric-line { display: block; margin-bottom: 5px; }
-        .indent-2 { margin-left: 80px; }
-        .stanza { margin-bottom: 3rem; }
+        .lyric-line { display: block; margin-bottom: 2px; }
+        .indent-2 { margin-left: 60px; }
+        .stanza { margin-bottom: 2rem; }
 
         footer {
             height: 100px;
@@ -130,7 +128,7 @@
             <a href="index.html">početna</a>
             <a href="uvod.html">uvod</a>
             <a href="sadrzaj.html">sadržaj</a>
-            <a href="random.html">nasumična<br>romansa</a>
+            <a href="javascript:void(0)" onclick="location.href = Math.floor(Math.random() * 4) + 1 + '.html';">nasumična<br>romansa</a>
         </nav>
     </header>
 
@@ -147,6 +145,14 @@
                     <div class="stanza">
                         <span class="lyric-line">Pjevci počinju pjevati</span>
                         <span class="lyric-line indent-2">Vrijeme je da se ustaje</span>
+                        <span class="lyric-line">Ne čekajmo danje sunce</span>
+                        <span class="lyric-line indent-2">Na noge družbo vesela!</span>
+                    </div>
+                    <div class="stanza">
+                        <span class="lyric-line">Po avdali pravo u Šadrvan</span>
+                        <span class="lyric-line indent-2">Sa čočecima da igramo i pjevamo</span>
+                        <span class="lyric-line">A ujutro u osvit dana</span>
+                        <span class="lyric-line indent-2">Rasuće se družba vesela.</span>
                     </div>
                 </div>
             </div>
@@ -156,7 +162,21 @@
                 <div class="lyrics-container">
                     <div class="stanza">
                         <span class="lyric-line">Il nono moz jama</span>
-                        <span class="lyric-line">Alaz sinko dela manjana</span>
+                        <span class="lyric-line indent-2">Alaz sinko dela manjana</span>
+                        <span class="lyric-line">Il gajo sta gritando</span>
+                        <span class="lyric-line indent-2">A todoz desperando</span>
+                    </div>
+                    <div class="stanza">
+                        <span class="lyric-line">Deša me a dormir</span>
+                        <span class="lyric-line indent-2">No me kero alvantar</span>
+                        <span class="lyric-line">Deša me a dormir</span>
+                        <span class="lyric-line indent-2">Il Djo mi va perdonar</span>
+                    </div>
+                    <div class="stanza">
+                        <span class="lyric-line">Ermozas ižikas</span>
+                        <span class="lyric-line indent-2">Fazieron laz burikatas</span>
+                        <span class="lyric-line">Todoz jaz stan kumiendo</span>
+                        <span class="lyric-line indent-2">Il rakija stan biviendo</span>
                     </div>
                 </div>
             </div>

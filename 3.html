@@ -35,7 +35,6 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
-            /* DEFAULT TO TEXT FONT */
             font-family: 'NarkissYair', sans-serif;
             transition: background var(--transition);
             overflow: hidden;
@@ -58,7 +57,7 @@
             text-transform: lowercase;
         }
 
-        main { display: flex; flex: 1; padding: 0 4rem; position: relative; }
+        main { display: flex; flex: 1; padding: 0 4rem; position: relative; overflow: hidden; }
 
         .sidebar {
             width: 150px;
@@ -79,30 +78,34 @@
             flex-direction: column;
             justify-content: center;
             padding-left: 50px;
+            height: 100%;
         }
 
-        /* TITLE STYLE - Narkiss Asaf */
         .romance-title {
             font-family: 'NarkissAsaf', monospace;
             font-size: 3.5rem;
             font-weight: normal;
             text-transform: lowercase;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             line-height: 1;
         }
         .title-offset { margin-left: 150px; display: block; }
 
-        /* LYRICS STYLE - Narkiss Yair */
         .lyrics-container { 
             font-family: 'NarkissYair', sans-serif;
-            font-size: 1.4rem; 
-            line-height: 1.6; 
+            font-size: 1.3rem; 
+            line-height: 1.3; 
             max-width: 800px; 
+            max-height: 65vh;
+            overflow-y: auto;
+            padding-right: 20px;
         }
-        .lyric-line { display: block; margin-bottom: 5px; }
+        .lyrics-container::-webkit-scrollbar { width: 0px; }
+
+        .lyric-line { display: block; margin-bottom: 2px; }
         .indent-1 { margin-left: 40px; }
         .indent-2 { margin-left: 80px; }
-        .stanza { margin-bottom: 3rem; }
+        .stanza { margin-bottom: 1.5rem; }
 
         footer {
             height: 100px;
@@ -131,7 +134,7 @@
             <a href="index.html">početna</a>
             <a href="uvod.html">uvod</a>
             <a href="sadrzaj.html">sadržaj</a>
-            <a href="random.html">nasumična<br>romansa</a>
+            <a href="javascript:void(0)" onclick="location.href = Math.floor(Math.random() * 4) + 1 + '.html';">nasumična<br>romansa</a>
         </nav>
     </header>
 
@@ -146,18 +149,53 @@
                 <h1 class="romance-title">o kako je <span class="title-offset">lijepa nevjesta</span></h1>
                 <div class="lyrics-container">
                     <div class="stanza">
-                        <span class="lyric-line">O kako je lijepa nevjesta</span>
-                        <span class="lyric-line indent-1">Bez bjelila i bez rumenila</span>
+                        <span class="lyric-line">Kakva svjetlost lijepa mlada</span>
+                        <span class="lyric-line indent-1">Nek je sretna sto godina</span>
+                        <span class="lyric-line indent-2">Dođi mlada uživajmo zaigrajmo</span>
+                    </div>
+                    <div class="stanza">
+                        <span class="lyric-line">Sa svekrvom baš sam zadovoljna</span>
+                        <span class="lyric-line indent-1">Nek zaigra hoću da je vidim.</span>
+                    </div>
+                    <div class="stanza">
+                        <span class="lyric-line">Sa snahom baš zadovoljna sam</span>
+                        <span class="lyric-line indent-1">Nek zaigra hoću da je vidim.</span>
+                    </div>
+                    <div class="stanza">
+                        <span class="lyric-line">Sa svekrom baš sam zadovoljna</span>
+                        <span class="lyric-line indent-1">Nek zaigra hoću da ga vidim.</span>
+                    </div>
+                    <div class="stanza">
+                        <span class="lyric-line">Sa rodbinom baš sam zadovoljna</span>
+                        <span class="lyric-line indent-1">Nek zaigraju hoću da ih vidim.</span>
                     </div>
                 </div>
             </div>
 
             <div id="content-lad" class="lang-content">
-                <h1 class="romance-title">ax k'egracioza <span class="title-offset">la novja</span></h1>
+                <h1 class="romance-title">jo pasi <span class="title-offset">por la tu puerta</span></h1>
                 <div class="lyrics-container">
                     <div class="stanza">
-                        <span class="lyric-line">Ax k'egracioza la novja</span>
-                        <span class="lyric-line">SIn fuzue i sin kolore</span>
+                        <span class="lyric-line">Ja pasi por la tu puerta</span>
+                        <span class="lyric-line indent-1">Tu stavaz en la guerta</span>
+                        <span class="lyric-line">Te saludi tu te fuites</span>
+                        <span class="lyric-line indent-1">Esto no me se arisenta</span>
+                    </div>
+                    <div class="stanza">
+                        <span class="lyric-line">Oi me ami, sjente me ami</span>
+                        <span class="lyric-line indent-1">Deša a tu madre i ven kon mi</span>
+                    </div>
+                    <div class="stanza">
+                        <span class="lyric-line">Oh ke linda mučačika</span>
+                        <span class="lyric-line indent-1">Ke tu te estas aziendo</span>
+                        <span class="lyric-line">La mi sangrai le mi sevo</span>
+                        <span class="lyric-line indent-1">Tu me estas deritiendo</span>
+                    </div>
+                    <div class="stanza">
+                        <span class="lyric-line">Oh kerida ten piadad</span>
+                        <span class="lyric-line indent-1">Ke so jo muj mansevo</span>
+                        <span class="lyric-line">Por dormir, por arepozar</span>
+                        <span class="lyric-line indent-1">La noće kajo sin shuenjo</span>
                     </div>
                 </div>
             </div>
