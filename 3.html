@@ -1,17 +1,27 @@
 <!DOCTYPE html>
-<html lang="bs">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>O kako je lijepa nevjesta - Sefardske Romanse</title>
+    <title>o kako je lijepa nevjesta - sefardske romanse</title>
     <style>
+        /* 1. DEFINE CUSTOM FONTS */
+        @font-face {
+            font-family: 'NarkissAsaf';
+            src: url('Narkiss Asaf Mono Regular.ttf') format('truetype');
+        }
+        @font-face {
+            font-family: 'NarkissYair';
+            src: url('Narkiss Yair Regular.ttf') format('truetype');
+        }
+
         :root { 
             --bg-color: #000000; 
             --text-color: #ffffff; 
             --inactive-color: #555555;
             --transition: 0.3s ease;
         }
-        /* Light Mode = Bosanski | Dark Mode = Ladino */
+        /* Light Mode = Bosanski / Dark Mode = Ladino */
         .light-mode { 
             --bg-color: #ffffff; 
             --text-color: #000000; 
@@ -25,7 +35,8 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
-            font-family: 'Courier New', Courier, monospace;
+            /* DEFAULT TO TEXT FONT */
+            font-family: 'NarkissYair', sans-serif;
             transition: background var(--transition);
             overflow: hidden;
         }
@@ -36,39 +47,69 @@
             z-index: 100;
         }
         .header-logo { width: 60px; margin-right: 50px; flex-shrink: 0; cursor: pointer; }
+        
         nav { display: flex; justify-content: space-between; flex-grow: 1; max-width: 1100px; }
-        nav a { color: var(--text-color); text-decoration: none; font-size: 1.2rem; }
+        nav a { 
+            color: var(--text-color); 
+            text-decoration: none; 
+            font-size: 1.2rem; 
+            line-height: 1.2; 
+            font-family: 'NarkissAsaf', monospace;
+            text-transform: lowercase;
+        }
 
         main { display: flex; flex: 1; padding: 0 4rem; position: relative; }
 
-        .sidebar { width: 150px; display: flex; flex-direction: column; gap: 5px; padding-top: 20px; }
-        .lang-toggle { 
-            font-size: 1.5rem; 
-            transition: color var(--transition); 
-            cursor: pointer; 
-            user-select: none;
+        .sidebar {
+            width: 150px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            padding-top: 20px;
+            font-family: 'NarkissAsaf', monospace;
+            text-transform: lowercase;
         }
+        .lang-toggle { font-size: 1.5rem; transition: color var(--transition); cursor: pointer; }
         .lang-toggle.active { color: var(--text-color); }
         .lang-toggle.inactive { color: var(--inactive-color); }
 
-        .content-area { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; padding-left: 50px; }
+        .content-area {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 50px;
+        }
 
-        /* TYPOGRAPHY */
-        .romance-title { font-size: 3.5rem; font-weight: bold; text-transform: uppercase; margin-bottom: 2rem; line-height: 1; }
-        .title-offset { margin-left: 280px; display: block; }
+        /* TITLE STYLE - Narkiss Asaf */
+        .romance-title {
+            font-family: 'NarkissAsaf', monospace;
+            font-size: 3.5rem;
+            font-weight: normal;
+            text-transform: lowercase;
+            margin-bottom: 2rem;
+            line-height: 1;
+        }
+        .title-offset { margin-left: 150px; display: block; }
 
-        .lyrics-container { font-size: 1.4rem; line-height: 1.6; max-width: 900px; }
+        /* LYRICS STYLE - Narkiss Yair */
+        .lyrics-container { 
+            font-family: 'NarkissYair', sans-serif;
+            font-size: 1.4rem; 
+            line-height: 1.6; 
+            max-width: 800px; 
+        }
         .lyric-line { display: block; margin-bottom: 5px; }
-        .indent-1 { margin-left: 140px; }
+        .indent-1 { margin-left: 40px; }
         .indent-2 { margin-left: 80px; }
-        .stanza { margin-bottom: 2rem; }
+        .stanza { margin-bottom: 3rem; }
 
-        /* FOOTER */
         footer {
             height: 100px;
             display: flex;
             justify-content: center;
             align-items: center;
+            font-family: 'NarkissAsaf', monospace;
             font-size: 3rem;
             gap: 40px;
         }
@@ -76,13 +117,9 @@
 
         .lang-content { display: none; }
         .lang-content.visible { display: block; }
-
-        /* Special layout for Ladino split columns */
-        .split-stanza { display: flex; gap: 50px; }
     </style>
 </head>
-<body class="light-mode">
-
+<body class="light-mode"> 
     <header>
         <div class="header-logo" id="universal-toggle">
             <svg viewBox="0 0 100 120">
@@ -94,7 +131,7 @@
             <a href="index.html">početna</a>
             <a href="uvod.html">uvod</a>
             <a href="sadrzaj.html">sadržaj</a>
-            <a href="random.html">nasumična romansa</a>
+            <a href="random.html">nasumična<br>romansa</a>
         </nav>
     </header>
 
@@ -106,46 +143,21 @@
 
         <div class="content-area">
             <div id="content-bos" class="lang-content visible">
-                <h1 class="romance-title">O KAKO JE <span class="title-offset">LIJEPA NEVJESTA</span></h1>
+                <h1 class="romance-title">o kako je <span class="title-offset">lijepa nevjesta</span></h1>
                 <div class="lyrics-container">
                     <div class="stanza">
-                        <span class="lyric-line">Kakva svjetlost lijepa mlada</span>
-                        <span class="lyric-line">Nek je sretna sto godina</span>
-                        <span class="lyric-line">Dođi mlada uživajmo zaigrajmo</span>
-                    </div>
-                    <div class="stanza">
-                        <span class="lyric-line indent-1">Sa svekrvom baš sam zadovoljna</span>
-                        <span class="lyric-line indent-1">Nek zaigra hoću da je vidim.</span>
-                    </div>
-                    <div class="stanza">
-                        <span class="lyric-line">Sa snahom baš zadovoljna sam</span>
-                        <span class="lyric-line">Nek zaigra hoću da je vidim</span>
+                        <span class="lyric-line">O kako je lijepa nevjesta</span>
+                        <span class="lyric-line indent-1">Bez bjelila i bez rumenila</span>
                     </div>
                 </div>
             </div>
 
             <div id="content-lad" class="lang-content">
-                <h1 class="romance-title">JO PASI <span class="title-offset">POR LA TU PUERTA</span></h1>
+                <h1 class="romance-title">ax k'egracioza <span class="title-offset">la novja</span></h1>
                 <div class="lyrics-container">
-                    <div class="stanza split-stanza">
-                        <div>
-                            <span class="lyric-line">Ja pasi por la tu puerta</span>
-                            <span class="lyric-line">Tu stavaz en la guerta</span>
-                            <span class="lyric-line">Te saludi tu te fuites</span>
-                            <span class="lyric-line">Esto no me se arisenta</span>
-                        </div>
-                        <div>
-                            <span class="lyric-line">Oh kerida ten piadad</span>
-                            <span class="lyric-line">Ke so jo muj mansevo</span>
-                            <span class="lyric-line">Por dormir, por arepozar</span>
-                            <span class="lyric-line">La noče kajo sin shuenjo</span>
-                        </div>
-                    </div>
                     <div class="stanza">
-                        <span class="lyric-line">Oi me ami</span>
-                        <span class="lyric-line">Sjente me ami</span>
-                        <span class="lyric-line">Deša a tu madre</span>
-                        <span class="lyric-line">I ven kon mi</span>
+                        <span class="lyric-line">Ax k'egracioza la novja</span>
+                        <span class="lyric-line">SIn fuzue i sin kolore</span>
                     </div>
                 </div>
             </div>

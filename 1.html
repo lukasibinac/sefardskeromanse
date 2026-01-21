@@ -3,8 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>U Osvit Dana - Sefardske Romanse</title>
+    <title>u osvit dana - sefardske romanse</title>
     <style>
+        /* 1. DEFINE CUSTOM FONTS */
+        @font-face {
+            font-family: 'NarkissAsaf';
+            src: url('Narkiss Asaf Mono Regular.ttf') format('truetype');
+        }
+        @font-face {
+            font-family: 'NarkissYair';
+            src: url('Narkiss Yair Regular.ttf') format('truetype');
+        }
+
         :root { 
             --bg-color: #000000; 
             --text-color: #ffffff; 
@@ -25,7 +35,8 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
-            font-family: 'Courier New', Courier, monospace;
+            /* DEFAULT TO TEXT FONT */
+            font-family: 'NarkissYair', sans-serif;
             transition: background var(--transition);
             overflow: hidden;
         }
@@ -36,8 +47,16 @@
             z-index: 100;
         }
         .header-logo { width: 60px; margin-right: 50px; flex-shrink: 0; cursor: pointer; }
+        
         nav { display: flex; justify-content: space-between; flex-grow: 1; max-width: 1100px; }
-        nav a { color: var(--text-color); text-decoration: none; font-size: 1.2rem; line-height: 1.2; }
+        nav a { 
+            color: var(--text-color); 
+            text-decoration: none; 
+            font-size: 1.2rem; 
+            line-height: 1.2; 
+            font-family: 'NarkissAsaf', monospace;
+            text-transform: lowercase;
+        }
 
         main { display: flex; flex: 1; padding: 0 4rem; position: relative; }
 
@@ -47,10 +66,10 @@
             flex-direction: column;
             gap: 5px;
             padding-top: 20px;
+            font-family: 'NarkissAsaf', monospace;
+            text-transform: lowercase;
         }
-        .lang-toggle { font-size: 1.5rem; transition: color var(--transition); }
-        
-        /* State logic for sidebar colors */
+        .lang-toggle { font-size: 1.5rem; transition: color var(--transition); cursor: pointer; }
         .lang-toggle.active { color: var(--text-color); }
         .lang-toggle.inactive { color: var(--inactive-color); }
 
@@ -62,20 +81,26 @@
             padding-left: 50px;
         }
 
+        /* TITLE STYLE - Narkiss Asaf */
         .romance-title {
+            font-family: 'NarkissAsaf', monospace;
             font-size: 3.5rem;
-            font-weight: bold;
-            text-transform: uppercase;
+            font-weight: normal;
+            text-transform: lowercase;
             margin-bottom: 2rem;
             line-height: 1;
         }
         .title-offset { margin-left: 150px; display: block; }
 
-        .lyrics-container { font-size: 1.4rem; line-height: 1.6; max-width: 800px; }
+        /* LYRICS STYLE - Narkiss Yair */
+        .lyrics-container { 
+            font-family: 'NarkissYair', sans-serif;
+            font-size: 1.4rem; 
+            line-height: 1.6; 
+            max-width: 800px; 
+        }
         .lyric-line { display: block; margin-bottom: 5px; }
-        .indent-1 { margin-left: 40px; }
         .indent-2 { margin-left: 80px; }
-        .indent-3 { margin-left: 120px; }
         .stanza { margin-bottom: 3rem; }
 
         footer {
@@ -83,17 +108,18 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            font-family: 'NarkissAsaf', monospace;
             font-size: 3rem;
             gap: 40px;
         }
         .nav-arrow { cursor: pointer; text-decoration: none; color: var(--text-color); }
 
-        /* Hide/Show based on active class */
         .lang-content { display: none; }
         .lang-content.visible { display: block; }
     </style>
 </head>
-<body class="light-mode"> <header>
+<body class="light-mode"> 
+    <header>
         <div class="header-logo" id="universal-toggle">
             <svg viewBox="0 0 100 120">
                 <path d="M50 10 V 110 H 10 V 50 A 40 40 0 0 1 50 10" fill="none" stroke="currentColor" stroke-width="5" />
@@ -116,7 +142,7 @@
 
         <div class="content-area">
             <div id="content-bos" class="lang-content visible">
-                <h1 class="romance-title">U OSVIT <span class="title-offset">DANA</span></h1>
+                <h1 class="romance-title">u osvit <span class="title-offset">dana</span></h1>
                 <div class="lyrics-container">
                     <div class="stanza">
                         <span class="lyric-line">Pjevci počinju pjevati</span>
@@ -126,7 +152,7 @@
             </div>
 
             <div id="content-lad" class="lang-content">
-                <h1 class="romance-title">LA <span class="title-offset">KAPARA</span></h1>
+                <h1 class="romance-title">la <span class="title-offset">kapara</span></h1>
                 <div class="lyrics-container">
                     <div class="stanza">
                         <span class="lyric-line">Il nono moz jama</span>
@@ -138,37 +164,46 @@
     </main>
 
     <footer>
-        <a href="#" class="nav-arrow">&lt;</a>
+        <a href="4.html" class="nav-arrow">&lt;</a>
         <span>1</span>
-        <a href="#" class="nav-arrow">&gt;</a>
+        <a href="2.html" class="nav-arrow">&gt;</a>
     </footer>
 
     <script>
         const toggle = document.getElementById('universal-toggle');
         const body = document.body;
-        
         const labelBos = document.getElementById('label-bos');
         const labelLad = document.getElementById('label-lad');
         const contentBos = document.getElementById('content-bos');
         const contentLad = document.getElementById('content-lad');
 
-        toggle.onclick = () => {
-            // Toggle Background Class
-            body.classList.toggle('light-mode');
-
-            if (body.classList.contains('light-mode')) {
-                // ACTIVE: BOSANSKI
+        function updateDisplay(isLight) {
+            if (isLight) {
                 labelBos.className = 'lang-toggle active';
                 labelLad.className = 'lang-toggle inactive';
                 contentBos.classList.add('visible');
                 contentLad.classList.remove('visible');
             } else {
-                // ACTIVE: LADINO
                 labelLad.className = 'lang-toggle active';
                 labelBos.className = 'lang-toggle inactive';
                 contentLad.classList.add('visible');
                 contentBos.classList.remove('visible');
             }
+        }
+
+        toggle.onclick = () => {
+            body.classList.toggle('light-mode');
+            updateDisplay(body.classList.contains('light-mode'));
+        };
+
+        labelBos.onclick = () => {
+            body.classList.add('light-mode');
+            updateDisplay(true);
+        };
+
+        labelLad.onclick = () => {
+            body.classList.remove('light-mode');
+            updateDisplay(false);
         };
     </script>
 </body>

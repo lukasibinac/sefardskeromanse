@@ -3,15 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Otvori Škure Te - Sefardske Romanse</title>
+    <title>otvori škure te - sefardske romanse</title>
     <style>
+        /* 1. DEFINE CUSTOM FONTS */
+        @font-face {
+            font-family: 'NarkissAsaf';
+            src: url('Narkiss Asaf Mono Regular.ttf') format('truetype');
+        }
+        @font-face {
+            font-family: 'NarkissYair';
+            src: url('Narkiss Yair Regular.ttf') format('truetype');
+        }
+
         :root { 
             --bg-color: #000000; 
             --text-color: #ffffff; 
             --inactive-color: #555555;
             --transition: 0.3s ease;
         }
-        /* Light Mode = Bosanski | Dark Mode = Ladino */
+        /* Light Mode = Bosanski / Dark Mode = Ladino */
         .light-mode { 
             --bg-color: #ffffff; 
             --text-color: #000000; 
@@ -25,22 +35,29 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
-            font-family: 'Courier New', Courier, monospace;
+            /* DEFAULT TO TEXT FONT */
+            font-family: 'NarkissYair', sans-serif;
             transition: background var(--transition);
             overflow: hidden;
         }
 
-        /* HEADER */
         header {
             width: 100%; padding: 2.5rem 4rem;
             display: flex; align-items: center; box-sizing: border-box;
             z-index: 100;
         }
         .header-logo { width: 60px; margin-right: 50px; flex-shrink: 0; cursor: pointer; }
+        
         nav { display: flex; justify-content: space-between; flex-grow: 1; max-width: 1100px; }
-        nav a { color: var(--text-color); text-decoration: none; font-size: 1.2rem; line-height: 1.2; }
+        nav a { 
+            color: var(--text-color); 
+            text-decoration: none; 
+            font-size: 1.2rem; 
+            line-height: 1.2; 
+            font-family: 'NarkissAsaf', monospace;
+            text-transform: lowercase;
+        }
 
-        /* MAIN CONTENT */
         main { display: flex; flex: 1; padding: 0 4rem; position: relative; }
 
         .sidebar {
@@ -49,13 +66,10 @@
             flex-direction: column;
             gap: 5px;
             padding-top: 20px;
+            font-family: 'NarkissAsaf', monospace;
+            text-transform: lowercase;
         }
-        .lang-toggle { 
-            font-size: 1.5rem; 
-            transition: color var(--transition); 
-            cursor: pointer; 
-            user-select: none;
-        }
+        .lang-toggle { font-size: 1.5rem; transition: color var(--transition); cursor: pointer; }
         .lang-toggle.active { color: var(--text-color); }
         .lang-toggle.inactive { color: var(--inactive-color); }
 
@@ -67,40 +81,45 @@
             padding-left: 50px;
         }
 
-        /* TITLE LAYOUT */
+        /* TITLE STYLE - Narkiss Asaf */
         .romance-title {
+            font-family: 'NarkissAsaf', monospace;
             font-size: 3.5rem;
-            font-weight: bold;
-            text-transform: uppercase;
+            font-weight: normal;
+            text-transform: lowercase;
             margin-bottom: 2rem;
             line-height: 1;
         }
         .title-offset { margin-left: 150px; display: block; }
 
-        /* LYRICS LAYOUT */
-        .lyrics-container { font-size: 1.4rem; line-height: 1.6; max-width: 800px; }
+        /* LYRICS STYLE - Narkiss Yair */
+        .lyrics-container { 
+            font-family: 'NarkissYair', sans-serif;
+            font-size: 1.4rem; 
+            line-height: 1.6; 
+            max-width: 800px; 
+        }
         .lyric-line { display: block; margin-bottom: 5px; }
-        .indent-1 { margin-left: 40px; }
         .indent-2 { margin-left: 80px; }
         .stanza { margin-bottom: 3rem; }
 
-        /* FOOTER NAVIGATION */
         footer {
             height: 100px;
             display: flex;
             justify-content: center;
             align-items: center;
+            font-family: 'NarkissAsaf', monospace;
             font-size: 3rem;
             gap: 40px;
         }
         .nav-arrow { cursor: pointer; text-decoration: none; color: var(--text-color); }
 
-        /* VISIBILITY TOGGLE */
         .lang-content { display: none; }
         .lang-content.visible { display: block; }
     </style>
 </head>
-<body class="light-mode"> <header>
+<body class="light-mode"> 
+    <header>
         <div class="header-logo" id="universal-toggle">
             <svg viewBox="0 0 100 120">
                 <path d="M50 10 V 110 H 10 V 50 A 40 40 0 0 1 50 10" fill="none" stroke="currentColor" stroke-width="5" />
@@ -123,31 +142,21 @@
 
         <div class="content-area">
             <div id="content-bos" class="lang-content visible">
-                <h1 class="romance-title">OTVORI <span class="title-offset">ŠKURE TE</span></h1>
+                <h1 class="romance-title">otvori škure <span class="title-offset">te</span></h1>
                 <div class="lyrics-container">
                     <div class="stanza">
                         <span class="lyric-line">Otvori škure te</span>
-                        <span class="lyric-line">Prozor otvori tvoj</span>
-                        <span class="lyric-line">Da vidim lišce crno ti</span>
-                        <span class="lyric-line">Bogu dušu ja dao bih.</span>
-                    </div>
-                    <div class="stanza">
-                        <span class="lyric-line indent-2">Kraj tvojih vrata prođoh ja</span>
-                        <span class="lyric-line">Zatvorena ih nađoh ja</span>
-                        <span class="lyric-line indent-2">Ključaonicu sam poljubio</span>
-                        <span class="lyric-line">Ko da sam ti lice ljubio.</span>
+                        <span class="lyric-line indent-2">Svijetli mjesecu</span>
                     </div>
                 </div>
             </div>
 
             <div id="content-lad" class="lang-content">
-                <h1 class="romance-title">UNA NOČE <span class="title-offset">AL LUNAR</span></h1>
+                <h1 class="romance-title">abra las <span class="title-offset">puertas</span></h1>
                 <div class="lyrics-container">
                     <div class="stanza">
-                        <span class="lyric-line">Una noče al lunar</span>
-                        <span class="lyric-line">Jo sali a kaminar</span>
-                        <span class="lyric-line">Kaminando i buškando</span>
-                        <span class="lyric-line">Onde se topa la mar.</span>
+                        <span class="lyric-line">Abra las puertas luzero</span>
+                        <span class="lyric-line">K'el dia ya k'ere amaneser</span>
                     </div>
                 </div>
             </div>
@@ -184,13 +193,11 @@
             }
         }
 
-        // Cycle through modes via logo
         universalToggle.onclick = () => {
             const currentMode = body.classList.contains('light-mode') ? 'ladino' : 'bosanski';
             updateDisplay(currentMode);
         };
 
-        // Switch via text click
         labelBos.onclick = () => updateDisplay('bosanski');
         labelLad.onclick = () => updateDisplay('ladino');
     </script>

@@ -3,8 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sefardske Romanse - Početna</title>
+    <title>sefardske romanse - početna</title>
     <style>
+        /* 1. DEFINE CUSTOM FONTS */
+        @font-face {
+            font-family: 'NarkissAsaf';
+            src: url('Narkiss Asaf Mono Regular.ttf') format('truetype');
+        }
+
+        @font-face {
+            font-family: 'NarkissYair';
+            src: url('Narkiss Yair Regular.ttf') format('truetype');
+        }
+
         :root {
             --bg-color: #000000;
             --text-color: #ffffff;
@@ -19,7 +30,8 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
-            font-family: 'Courier New', Courier, monospace;
+            /* DEFAULT TEXT FONT */
+            font-family: 'NarkissYair', sans-serif;
             transition: background-color var(--transition-speed), color var(--transition-speed);
             overflow: hidden;
         }
@@ -31,15 +43,10 @@
             align-items: center;
             box-sizing: border-box;
             position: relative;
-            z-index: 20; /* Ensures links are above everything */
+            z-index: 20;
         }
 
-        .logo-placeholder {
-            width: 60px;
-            margin-right: 50px;
-            flex-shrink: 0;
-        }
-
+        /* HEADER NAV LINKS - Narkiss Asaf Small Letters */
         nav {
             display: flex;
             justify-content: space-between;
@@ -47,13 +54,16 @@
             max-width: 1100px;
         }
 
-        nav a { 
-            color: var(--text-color); 
-            text-decoration: none; 
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
             font-size: 1.2rem;
-            position: relative;
-            z-index: 25;
+            transition: opacity var(--transition-speed);
+            font-family: 'NarkissAsaf', monospace;
+            text-transform: lowercase; /* Forces small letters */
         }
+
+        .logo-placeholder { width: 60px; margin-right: 50px; }
 
         main {
             flex-grow: 1;
@@ -62,23 +72,25 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            margin-top: -50px; 
         }
 
         .center-logo {
-            width: 180px; /* Made larger */
+            width: 180px;
             cursor: pointer;
             margin-bottom: 3rem;
         }
 
         .center-logo svg { fill: var(--text-color); }
 
+        /* MAIN TITLE - Narkiss Asaf Small Letters */
         .title-container h1 {
-            font-size: 5rem; /* Increased size to look "longer/fuller" */
+            font-family: 'NarkissAsaf', monospace;
+            font-size: 5rem;
             margin: 0;
-            letter-spacing: 6px;
+            letter-spacing: 2px;
             line-height: 0.9;
             font-weight: normal;
+            text-transform: lowercase; /* Forces small letters */
         }
     </style>
 </head>
@@ -101,13 +113,14 @@
             </svg>
         </div>
         <div class="title-container">
-            <h1>sefardske</h1>
-            <h1>romanse</h1>
+            <h1>sefardske<br>romanse</h1>
         </div>
     </main>
 
     <script>
-        document.getElementById('theme-toggle').onclick = () => document.body.classList.toggle('light-mode');
+        document.getElementById('theme-toggle').onclick = () => {
+            document.body.classList.toggle('light-mode');
+        };
     </script>
 </body>
 </html>

@@ -3,15 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Majko moja kada umrem - Sefardske Romanse</title>
+    <title>majko moja kad umrem - sefardske romanse</title>
     <style>
+        /* 1. DEFINE CUSTOM FONTS */
+        @font-face {
+            font-family: 'NarkissAsaf';
+            src: url('Narkiss Asaf Mono Regular.ttf') format('truetype');
+        }
+        @font-face {
+            font-family: 'NarkissYair';
+            src: url('Narkiss Yair Regular.ttf') format('truetype');
+        }
+
         :root { 
             --bg-color: #000000; 
             --text-color: #ffffff; 
             --inactive-color: #555555;
             --transition: 0.3s ease;
         }
-        /* Light Mode = Bosanski | Dark Mode = Ladino */
+        /* Light Mode = Bosanski / Dark Mode = Ladino */
         .light-mode { 
             --bg-color: #ffffff; 
             --text-color: #000000; 
@@ -25,7 +35,8 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
-            font-family: 'Courier New', Courier, monospace;
+            /* DEFAULT TO TEXT FONT */
+            font-family: 'NarkissYair', sans-serif;
             transition: background var(--transition);
             overflow: hidden;
         }
@@ -36,37 +47,69 @@
             z-index: 100;
         }
         .header-logo { width: 60px; margin-right: 50px; flex-shrink: 0; cursor: pointer; }
+        
         nav { display: flex; justify-content: space-between; flex-grow: 1; max-width: 1100px; }
-        nav a { color: var(--text-color); text-decoration: none; font-size: 1.2rem; }
+        nav a { 
+            color: var(--text-color); 
+            text-decoration: none; 
+            font-size: 1.2rem; 
+            line-height: 1.2; 
+            font-family: 'NarkissAsaf', monospace;
+            text-transform: lowercase;
+        }
 
         main { display: flex; flex: 1; padding: 0 4rem; position: relative; }
 
-        .sidebar { width: 150px; display: flex; flex-direction: column; gap: 5px; padding-top: 20px; }
-        .lang-toggle { 
-            font-size: 1.5rem; 
-            transition: color var(--transition); 
-            cursor: pointer; 
-            user-select: none;
+        .sidebar {
+            width: 150px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            padding-top: 20px;
+            font-family: 'NarkissAsaf', monospace;
+            text-transform: lowercase;
         }
+        .lang-toggle { font-size: 1.5rem; transition: color var(--transition); cursor: pointer; }
         .lang-toggle.active { color: var(--text-color); }
         .lang-toggle.inactive { color: var(--inactive-color); }
 
-        .content-area { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; padding-left: 50px; }
+        .content-area {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 50px;
+        }
 
-        /* TYPOGRAPHY */
-        .romance-title { font-size: 3.5rem; font-weight: bold; text-transform: uppercase; margin-bottom: 2rem; line-height: 1.1; }
-        .title-offset { display: block; }
+        /* TITLE STYLE - Narkiss Asaf */
+        .romance-title {
+            font-family: 'NarkissAsaf', monospace;
+            font-size: 3.5rem;
+            font-weight: normal;
+            text-transform: lowercase;
+            margin-bottom: 2rem;
+            line-height: 1;
+        }
+        .title-offset { margin-left: 150px; display: block; }
 
-        .lyrics-container { font-size: 1.4rem; line-height: 1.4; max-width: 900px; }
-        .lyric-line { display: block; margin-bottom: 3px; }
-        .stanza { margin-bottom: 1.5rem; }
+        /* LYRICS STYLE - Narkiss Yair */
+        .lyrics-container { 
+            font-family: 'NarkissYair', sans-serif;
+            font-size: 1.4rem; 
+            line-height: 1.6; 
+            max-width: 800px; 
+        }
+        .lyric-line { display: block; margin-bottom: 5px; }
+        .indent-1 { margin-left: 40px; }
+        .indent-2 { margin-left: 80px; }
+        .stanza { margin-bottom: 3rem; }
 
-        /* FOOTER */
         footer {
             height: 100px;
             display: flex;
             justify-content: center;
             align-items: center;
+            font-family: 'NarkissAsaf', monospace;
             font-size: 3rem;
             gap: 40px;
         }
@@ -74,13 +117,9 @@
 
         .lang-content { display: none; }
         .lang-content.visible { display: block; }
-
-        /* Two column layout for Hanuka lyrics */
-        .split-stanza { display: flex; gap: 80px; }
     </style>
 </head>
-<body class="light-mode">
-
+<body class="light-mode"> 
     <header>
         <div class="header-logo" id="universal-toggle">
             <svg viewBox="0 0 100 120">
@@ -92,7 +131,7 @@
             <a href="index.html">početna</a>
             <a href="uvod.html">uvod</a>
             <a href="sadrzaj.html">sadržaj</a>
-            <a href="random.html">nasumična romansa</a>
+            <a href="random.html">nasumična<br>romansa</a>
         </nav>
     </header>
 
@@ -104,57 +143,23 @@
 
         <div class="content-area">
             <div id="content-bos" class="lang-content visible">
-                <h1 class="romance-title">MAJKO MOJA <br> KADA UMREM</h1>
+                <h1 class="romance-title">majko moja <span class="title-offset">kad umrem</span></h1>
                 <div class="lyrics-container">
                     <div class="stanza">
-                        <span class="lyric-line">Majko moja kada umrem</span>
-                        <span class="lyric-line">Neću kantore</span>
-                        <span class="lyric-line">Nego dvanaest mladića</span>
-                        <span class="lyric-line">pred mojim kovčegom</span>
-                        <span class="lyric-line">Hajva — šikirola...</span>
-                    </div>
-                    <div class="stanza">
-                        <span class="lyric-line">Majko moja kada umrem</span>
-                        <span class="lyric-line">Nek me nose lagano</span>
-                        <span class="lyric-line">Neka vide da sam dijete</span>
-                        <span class="lyric-line">Neka počnu plakati</span>
-                        <span class="lyric-line">Hajva — šikirola</span>
+                        <span class="lyric-line">Majko moja kad umrem</span>
+                        <span class="lyric-line indent-1">Ukopaj me u bašti</span>
+                        <span class="lyric-line indent-2">Gdje cvjeta cvijeće</span>
                     </div>
                 </div>
             </div>
 
             <div id="content-lad" class="lang-content">
-                <h1 class="romance-title">EN <br> UNA <br> KALEŽIKA</h1>
+                <h1 class="romance-title">madre mija <span class="title-offset">kuando m'emueran</span></h1>
                 <div class="lyrics-container">
-                    <div class="split-stanza">
-                        <div class="stanza">
-                            <span class="lyric-line">Hanuka linda sta aki</span>
-                            <span class="lyric-line">Očo kandelas para mi</span>
-                            <br>
-                            <span class="lyric-line">Una kandelika</span>
-                            <span class="lyric-line">Doz kandelikas</span>
-                            <span class="lyric-line">Trez kandelikas</span>
-                            <span class="lyric-line">Kuatro kandelikas</span>
-                            <span class="lyric-line">Sintju kandelikas</span>
-                            <span class="lyric-line">Sež kandelikas</span>
-                            <span class="lyric-line">Siete kandelikas</span>
-                            <span class="lyric-line">Očo kandelas para mi</span>
-                        </div>
-                        <div class="stanza">
-                            <span class="lyric-line">Mučas fiestas vo fazer</span>
-                            <span class="lyric-line">Kon alegrijas i plazer</span>
-                            <br>
-                            <span class="lyric-line">Una kandelika</span>
-                            <span class="lyric-line">Doz kandelikas</span>
-                            <span class="lyric-line">Trez...</span>
-                            <br><br>
-                            <span class="lyric-line">Los pastelikos vo kumer</span>
-                            <span class="lyric-line">Kon almendrikas i la mijel</span>
-                            <br>
-                            <span class="lyric-line">Una kandelika</span>
-                            <span class="lyric-line">Doz kandelikas</span>
-                            <span class="lyric-line">Trez...</span>
-                        </div>
+                    <div class="stanza">
+                        <span class="lyric-line">Madre mija kuando m'emueran</span>
+                        <span class="lyric-line">Enterradme en el huerto</span>
+                        <span class="lyric-line">Onde k'el kave se va amatar</span>
                     </div>
                 </div>
             </div>
@@ -164,7 +169,7 @@
     <footer>
         <a href="3.html" class="nav-arrow">&lt;</a>
         <span>4</span>
-        <a href="5.html" class="nav-arrow">&gt;</a>
+        <a href="1.html" class="nav-arrow">&gt;</a>
     </footer>
 
     <script>

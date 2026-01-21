@@ -3,8 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uvod - Sefardske Romanse</title>
+    <title>uvod - sefardske romanse</title>
     <style>
+        /* 1. DEFINE CUSTOM FONTS */
+        @font-face {
+            font-family: 'NarkissAsaf';
+            src: url('Narkiss Asaf Mono Regular.ttf') format('truetype');
+        }
+
+        @font-face {
+            font-family: 'NarkissYair';
+            src: url('Narkiss Yair Regular.ttf') format('truetype');
+        }
+
         :root { 
             --bg-color: #000000; --text-color: #ffffff; 
             --blue: #0055ff; --red: #ff0000; --purple: #6a0dad; --green: #4db300; 
@@ -14,7 +25,8 @@
         body { 
             background-color: var(--bg-color); color: var(--text-color); 
             margin: 0; height: 100vh; display: flex; flex-direction: column; 
-            font-family: 'Courier New', Courier, monospace; 
+            /* MAIN TEXT FONT */
+            font-family: 'NarkissYair', sans-serif; 
             overflow: hidden; transition: background 0.3s;
         }
 
@@ -27,34 +39,50 @@
         .header-logo {
             width: 60px; margin-right: 50px; flex-shrink: 0; cursor: pointer;
         }
-        .header-logo svg { fill: var(--text-color); }
 
-        nav {
-            display: flex; justify-content: space-between; flex-grow: 1; max-width: 1100px;
+        /* HEADER NAV - Narkiss Asaf Small Letters */
+        nav { display: flex; justify-content: space-between; flex-grow: 1; max-width: 1100px; }
+        nav a { 
+            color: var(--text-color); 
+            text-decoration: none; 
+            font-size: 1.2rem;
+            font-family: 'NarkissAsaf', monospace;
+            text-transform: lowercase;
         }
 
-        nav a { color: var(--text-color); text-decoration: none; font-size: 1.2rem; z-index: 25; }
+        main { 
+            display: flex; flex-grow: 1; padding: 0 4rem; 
+            align-items: center; justify-content: space-between; 
+        }
 
-        main { display: flex; flex: 1; align-items: center; padding: 0 10%; gap: 50px; z-index: 10; }
-        .text-section { width: 55%; }
-        .intro-p { font-size: 1.4rem; line-height: 1.6; margin-bottom: 2rem; opacity: 0.5; transition: 0.3s; cursor: pointer; }
-        .intro-p:hover { opacity: 1; }
+        /* INTRO TEXT - Narkiss Yair */
+        .intro-text { width: 45%; z-index: 10; font-family: 'NarkissYair', sans-serif; }
         
+        .intro-p { 
+            font-size: 1.5rem; line-height: 1.6; margin-bottom: 2rem; 
+            opacity: 0.3; transition: opacity 0.5s, color 0.5s; cursor: default;
+        }
+        .intro-p.active { opacity: 1; }
+
         .word { font-weight: bold; transition: color 0.3s; }
-        .p1:hover .word { color: var(--blue); }
-        .p2:hover .word { color: var(--red); }
-        .p3:hover .word { color: var(--purple); }
-        .p4:hover .word { color: var(--green); }
+        .p1.active .word { color: var(--blue); }
+        .p2.active .word { color: var(--red); }
+        .p3.active .word { color: var(--purple); }
+        .p4.active .word { color: var(--green); }
 
-        .art-section { width: 45%; display: flex; justify-content: center; align-items: center; }
-        .svg-container { width: 350px; height: 350px; display: none; }
-        .svg-container.active { display: block; animation: fadeIn 0.5s ease; }
-        .svg-container svg { width: 100%; height: 100%; stroke: var(--text-color); fill: none; stroke-width: 1.5; }
+        .art-section { width: 45%; height: 60vh; position: relative; }
+        .svg-container { 
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+            display: flex; align-items: center; justify-content: center; 
+            opacity: 0; transition: opacity 0.5s; 
+        }
+        .svg-container.active { opacity: 1; }
 
-        @keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+        svg { width: 80%; height: 80%; fill: none; stroke: var(--text-color); stroke-width: 2; }
     </style>
 </head>
 <body>
+
     <header>
         <div class="header-logo" id="theme-toggle">
             <svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
@@ -71,11 +99,19 @@
     </header>
 
     <main>
-        <div class="text-section">
-            <p class="intro-p p1" data-target="art-1">Sefardi su <span class="word">Jevreji prognani</span> iz Španije...</p>
-            <p class="intro-p p2" data-target="art-2">Cuvali su <span class="word">ključeve</span> od svojih kuća...</p>
-            <p class="intro-p p3" data-target="art-3"><span class="word">Sarajevska hagada</span> je oslikani kodeks...</p>
-            <p class="intro-p p4" data-target="art-4">Negovali su kulturu preko <span class="word">romansi</span>...</p>
+        <div class="intro-text">
+            <p class="intro-p p1 active" data-target="art-1">
+                <span class="word">Sefardi</span> su Jevreji koji su nakon 1492. godine...
+            </p>
+            <p class="intro-p p2" data-target="art-2">
+                Naselili su se širom <span class="word">Balkana</span>, donoseći svoj jezik...
+            </p>
+            <p class="intro-p p3" data-target="art-3">
+                <span class="word">Sarajevska hagada</span> je oslikani kodeks...
+            </p>
+            <p class="intro-p p4" data-target="art-4">
+                Negovali su kulturu preko <span class="word">romansi</span>...
+            </p>
         </div>
         <div class="art-section">
             <div id="art-1" class="svg-container active"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" /></svg></div>
@@ -89,13 +125,16 @@
         document.getElementById('theme-toggle').onclick = () => document.body.classList.toggle('light-mode');
 
         const paragraphs = document.querySelectorAll('.intro-p');
-        const containers = document.querySelectorAll('.svg-container');
+        const svgs = document.querySelectorAll('.svg-container');
 
         paragraphs.forEach(p => {
             p.addEventListener('mouseenter', () => {
-                containers.forEach(c => c.classList.remove('active'));
-                const target = document.getElementById(p.dataset.target);
-                if(target) target.classList.add('active');
+                paragraphs.forEach(el => el.classList.remove('active'));
+                svgs.forEach(el => el.classList.remove('active'));
+                
+                p.classList.add('active');
+                const targetId = p.getAttribute('data-target');
+                document.getElementById(targetId).classList.add('active');
             });
         });
     </script>
