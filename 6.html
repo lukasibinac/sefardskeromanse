@@ -31,12 +31,11 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             margin: 0;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             font-family: 'NarkissYair', sans-serif;
             transition: background var(--transition);
-            overflow: hidden; 
         }
 
         header {
@@ -55,7 +54,13 @@
             text-transform: lowercase;
         }
 
-        main { display: flex; flex: 1; padding: 0 4rem; position: relative; align-items: center; }
+        main { 
+            display: flex; 
+            flex: 1; 
+            padding: 2rem 4rem; 
+            position: relative; 
+            align-items: flex-start; 
+        }
 
         .sidebar {
             width: 150px;
@@ -65,6 +70,8 @@
             font-family: 'NarkissAsaf', monospace;
             text-transform: lowercase;
             flex-shrink: 0;
+            position: sticky;
+            top: 2rem;
         }
         .lang-toggle { font-size: 1.5rem; transition: color var(--transition); cursor: pointer; }
         .lang-toggle.active { color: var(--text-color); }
@@ -74,7 +81,6 @@
             width: 45%; 
             display: flex;
             flex-direction: column;
-            justify-content: center;
             padding-left: 50px;
             z-index: 10;
         }
@@ -83,8 +89,8 @@
             flex-grow: 1;
             display: flex;
             justify-content: center;
-            align-items: center;
-            height: 100%;
+            align-items: flex-start;
+            padding-top: 2rem;
         }
 
         .visual-wrapper {
@@ -112,9 +118,8 @@
         .visual-wrapper img { opacity: 0; }
         body:not(.light-mode) .visual-wrapper img { opacity: 1; }
 
-        /* Illustration outlines ONLY */
+        /* Illustration outlines */
         .cls-1 { fill: none; stroke: currentColor; stroke-miterlimit: 10; stroke-width: 8px; }
-        .cls-2 { fill: none; }
 
         .romance-title {
             font-family: 'NarkissAsaf', monospace;
@@ -123,29 +128,48 @@
             text-transform: lowercase;
             margin-bottom: 2rem;
             line-height: 1;
+            margin-top: 0;
         }
         .title-offset { margin-left: 150px; display: block; }
 
-        .lyrics-container { font-size: 1.3rem; line-height: 1.4; max-height: 60vh; overflow-y: auto; }
-        .lyrics-container::-webkit-scrollbar { width: 0; }
+        .lyrics-container { font-size: 1.3rem; line-height: 1.4; }
         .lyric-line { display: block; margin-bottom: 2px; }
         .indent-1 { margin-left: 40px; }
         .indent-2 { margin-left: 80px; }
         .stanza { margin-bottom: 2rem; }
 
         footer {
-            height: 100px;
+            height: 150px;
             display: flex;
             justify-content: center;
             align-items: center;
             font-family: 'NarkissAsaf', monospace;
             font-size: 3rem;
             gap: 40px;
+            flex-shrink: 0;
         }
         .nav-arrow { cursor: pointer; text-decoration: none; color: var(--text-color); }
 
         .lang-content { display: none; }
         .lang-content.visible { display: block; }
+
+        /* RESPONSIVE FIXES */
+        @media (max-width: 1024px) {
+            main { flex-direction: column; }
+            .sidebar { flex-direction: row; width: 100%; margin-bottom: 2rem; position: static; gap: 20px; }
+            .content-area { width: 100%; padding-left: 0; }
+            .visual-area { width: 100%; padding-top: 2rem; }
+            .title-offset { margin-left: 50px; }
+        }
+
+        @media (max-width: 600px) {
+            header { padding: 1.5rem 2rem; flex-direction: column; gap: 1rem; }
+            .header-logo { margin-right: 0; }
+            nav { gap: 10px; flex-wrap: wrap; justify-content: center; }
+            nav a { font-size: 1rem; }
+            .romance-title { font-size: 2.5rem; }
+            .title-offset { margin-left: 0; }
+        }
     </style>
 </head>
 <body class="light-mode"> 

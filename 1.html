@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="bs">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>u osvit dana - sefardske romanse</title>
     <style>
+        /* 1. DEFINE CUSTOM FONTS */
         @font-face {
             font-family: 'NarkissAsaf';
             src: url('Narkiss Asaf Mono Regular.ttf') format('truetype');
@@ -31,12 +32,13 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             margin: 0;
-            height: 100vh;
+            /* Changed height to min-height to allow scrolling */
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             font-family: 'NarkissYair', sans-serif;
             transition: background var(--transition);
-            overflow: hidden;
+            /* Removed overflow: hidden */
         }
 
         header {
@@ -56,7 +58,13 @@
             transition: color var(--transition);
         }
 
-        main { display: flex; flex: 1; padding: 0 4rem; position: relative; align-items: center; }
+        main { 
+            display: flex; 
+            flex: 1; 
+            padding: 2rem 4rem; 
+            position: relative; 
+            align-items: flex-start; /* Changed from center for better scroll behavior */
+        }
 
         .sidebar {
             width: 150px;
@@ -66,6 +74,8 @@
             font-family: 'NarkissAsaf', monospace;
             text-transform: lowercase;
             flex-shrink: 0;
+            position: sticky;
+            top: 2rem;
         }
         .lang-toggle { font-size: 1.5rem; transition: color var(--transition); cursor: pointer; }
         .lang-toggle.active { color: var(--text-color); }
@@ -75,7 +85,6 @@
             width: 45%; 
             display: flex;
             flex-direction: column;
-            justify-content: center;
             padding-left: 50px;
             z-index: 10;
         }
@@ -84,8 +93,8 @@
             flex-grow: 1;
             display: flex;
             justify-content: center;
-            align-items: center;
-            height: 100%;
+            align-items: flex-start;
+            padding-top: 2rem;
         }
 
         .visual-wrapper {
@@ -104,7 +113,6 @@
             height: 100%;
             object-fit: contain;
             transition: opacity var(--transition);
-            pointer-events: none;
         }
 
         .visual-wrapper img { opacity: 0; }
@@ -113,42 +121,58 @@
         body.light-mode .visual-wrapper svg { opacity: 1; }
         body:not(.light-mode) .visual-wrapper img { opacity: 1; }
 
-        .cls-1 {
-            fill: none;
-            stroke: currentColor;
-            stroke-miterlimit: 10;
-            stroke-width: 6px;
-        }
-
         .romance-title {
             font-family: 'NarkissAsaf', monospace;
             font-size: 3.5rem;
-            font-weight: normal;
             text-transform: lowercase;
             margin-bottom: 2rem;
             line-height: 1;
+            margin-top: 0;
         }
         .title-offset { margin-left: 150px; display: block; }
 
-        .lyrics-container { font-size: 1.3rem; line-height: 1.4; max-height: 60vh; overflow-y: auto; }
-        .lyrics-container::-webkit-scrollbar { width: 0; }
+        .lyrics-container { 
+            font-size: 1.4rem; 
+            line-height: 1.4; 
+            max-width: 800px; 
+        }
         .lyric-line { display: block; margin-bottom: 2px; }
         .indent-2 { margin-left: 60px; }
-        .stanza { margin-bottom: 1.5rem; }
+        .stanza { margin-bottom: 2rem; }
 
         footer {
-            height: 100px;
+            height: 150px;
             display: flex;
             justify-content: center;
             align-items: center;
             font-family: 'NarkissAsaf', monospace;
             font-size: 3rem;
             gap: 40px;
+            flex-shrink: 0;
         }
         .nav-arrow { cursor: pointer; text-decoration: none; color: var(--text-color); }
 
         .lang-content { display: none; }
         .lang-content.visible { display: block; }
+
+        /* RESPONSIVE FIXES */
+        @media (max-width: 1024px) {
+            main { flex-direction: column; }
+            .sidebar { flex-direction: row; width: 100%; margin-bottom: 2rem; position: static; gap: 20px; }
+            .content-area { width: 100%; padding-left: 0; }
+            .visual-area { width: 100%; justify-content: flex-start; }
+            .title-offset { margin-left: 50px; }
+        }
+
+        @media (max-width: 600px) {
+            header { padding: 1.5rem 2rem; flex-direction: column; gap: 1rem; }
+            .header-logo { margin-right: 0; }
+            nav { gap: 10px; flex-wrap: wrap; justify-content: center; }
+            nav a { font-size: 1rem; }
+            main { padding: 1rem 2rem; }
+            .romance-title { font-size: 2.5rem; }
+            .title-offset { margin-left: 0; }
+        }
     </style>
 </head>
 <body class="light-mode"> 
@@ -221,6 +245,16 @@
             <div class="visual-wrapper">
                 <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" 
                      viewBox="650 350 800 550" preserveAspectRatio="xMidYMid meet">
+                    <defs>
+                        <style>
+                            .cls-1 {
+                                fill: none;
+                                stroke: currentColor;
+                                stroke-miterlimit: 10;
+                                stroke-width: 6px;
+                            }
+                        </style>
+                    </defs>
                     <path class="cls-1" d="M831.59,563.88l96.48-97.29,40.88-.82,59.68,22.08,27.8,7.36,48.24,2.45,56.41,3.27,25.35,17.99,12.26,32.7-15.53,39.24,18.8,21.26,13.08-2.45-13.08,13.9-37.61-22.89-6.54-18.8,8.18-33.52-22.89-13.08-46.6-.82-49.87,16.35,38.43,8.18,25.35,40.88-1.64,8.99,7.36,13.9-4.91,9.81-17.17,2.45-10.63,6.54,3.27,24.53-53.14-4.91-4.09-27.8,25.35-14.72,20.44.82,2.45-13.08-13.9-11.45-60.5,1.64-58.05-14.72-61.32,20.35-6.36,24.16-21.08,15.81-24.89,1.09-16.81,21.89-46.88,5.18,17.17-43.33h20.44l18.8-5.45,4.09-8.99-36.79-21.26-14.72,6.54c-18.12-9.22-36.44-18.75-54.94-28.59-15.99-8.51-31.71-17.04-47.15-25.57,28.16,2.07,56.32,4.15,84.48,6.22-20.98-8.92-41.97-17.84-62.95-26.75-14.81,2.36-29.62,4.72-44.42,7.09,2.69-6.9,5.38-13.79,8.06-20.69l39.52-18.8,41.97,1.09,16.08-24.8,20.44-4.63,27.25,5.18,12.54-3.82.82,13.35,10.9,15.26,2.18,27.8-5.45,47.97,5.36-4.27Z"/>
                     <polyline class="cls-1" points="755.21 497.68 765.38 510.03 801.72 511.49 813.35 499.13"/>
                 </svg>
@@ -263,8 +297,15 @@
             updateDisplay(body.classList.contains('light-mode'));
         };
 
-        labelBos.onclick = () => { body.classList.add('light-mode'); updateDisplay(true); };
-        labelLad.onclick = () => { body.classList.remove('light-mode'); updateDisplay(false); };
+        labelBos.onclick = () => {
+            body.classList.add('light-mode');
+            updateDisplay(true);
+        };
+
+        labelLad.onclick = () => {
+            body.classList.remove('light-mode');
+            updateDisplay(false);
+        };
     </script>
 </body>
 </html>
