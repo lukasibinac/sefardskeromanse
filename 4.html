@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>majko moja kad umrem - sefardske romanse</title>
     <style>
-        /* 1. DEFINE CUSTOM FONTS */
         @font-face {
             font-family: 'NarkissAsaf';
             src: url('Narkiss Asaf Mono Regular.ttf') format('truetype');
@@ -19,9 +18,9 @@
             --bg-color: #000000; 
             --text-color: #ffffff; 
             --inactive-color: #555555;
-            --transition: 0.3s ease;
+            --transition: 0.5s ease;
         }
-        /* Light Mode = Bosanski / Dark Mode = Ladino */
+        
         .light-mode { 
             --bg-color: #ffffff; 
             --text-color: #000000; 
@@ -37,7 +36,7 @@
             flex-direction: column;
             font-family: 'NarkissYair', sans-serif;
             transition: background var(--transition);
-            overflow: hidden;
+            overflow: hidden; 
         }
 
         header {
@@ -52,60 +51,89 @@
             color: var(--text-color); 
             text-decoration: none; 
             font-size: 1.2rem; 
-            line-height: 1.2; 
             font-family: 'NarkissAsaf', monospace;
             text-transform: lowercase;
         }
 
-        main { display: flex; flex: 1; padding: 0 4rem; position: relative; overflow: hidden; }
+        main { display: flex; flex: 1; padding: 0 4rem; position: relative; align-items: center; }
 
         .sidebar {
             width: 150px;
             display: flex;
             flex-direction: column;
             gap: 5px;
-            padding-top: 20px;
             font-family: 'NarkissAsaf', monospace;
             text-transform: lowercase;
+            flex-shrink: 0;
         }
         .lang-toggle { font-size: 1.5rem; transition: color var(--transition); cursor: pointer; }
         .lang-toggle.active { color: var(--text-color); }
         .lang-toggle.inactive { color: var(--inactive-color); }
 
         .content-area {
-            flex-grow: 1;
+            width: 45%; 
             display: flex;
             flex-direction: column;
             justify-content: center;
             padding-left: 50px;
+            z-index: 10;
+        }
+
+        .visual-area {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             height: 100%;
         }
+
+        .visual-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 800px; 
+            aspect-ratio: 16 / 9;
+        }
+
+        .visual-wrapper svg,
+        .visual-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: opacity var(--transition), transform var(--transition);
+            pointer-events: none;
+        }
+
+        .visual-wrapper svg { opacity: 0; }
+        .visual-wrapper img { opacity: 0; }
+
+        body.light-mode .visual-wrapper svg { opacity: 1; }
+        body:not(.light-mode) .visual-wrapper img { opacity: 1; }
+
+        /* Specific transforms for Artwork 4 */
+        img[src="4.png"] { transform: scale(1.1) translateY(10px); }
+        #extra-overlay { transform: translateY(-250px) scale(0.85); z-index: 10; }
+
+        .cls-1 { fill: none; stroke: currentColor; stroke-miterlimit: 10; stroke-width: 8px; }
 
         .romance-title {
             font-family: 'NarkissAsaf', monospace;
             font-size: 3.5rem;
             font-weight: normal;
             text-transform: lowercase;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             line-height: 1;
         }
         .title-offset { margin-left: 150px; display: block; }
 
-        .lyrics-container { 
-            font-family: 'NarkissYair', sans-serif;
-            font-size: 1.3rem; 
-            line-height: 1.3; 
-            max-width: 800px; 
-            max-height: 65vh;
-            overflow-y: auto;
-            padding-right: 20px;
-        }
-        .lyrics-container::-webkit-scrollbar { width: 0px; }
-
+        .lyrics-container { font-size: 1.3rem; line-height: 1.4; max-height: 60vh; overflow-y: auto; }
+        .lyrics-container::-webkit-scrollbar { width: 0; }
         .lyric-line { display: block; margin-bottom: 2px; }
         .indent-1 { margin-left: 40px; }
         .indent-2 { margin-left: 80px; }
-        .stanza { margin-bottom: 1.5rem; }
+        .stanza { margin-bottom: 2rem; }
 
         footer {
             height: 100px;
@@ -186,19 +214,25 @@
                         <span class="lyric-line indent-2">Aserka te al mi lado</span>
                         <span class="lyric-line">Ke ojera tu boz.</span>
                     </div>
-                    <div class="stanza">
-                        <span class="lyric-line">El pašaro s'aserka</span>
-                        <span class="lyric-line indent-1">S'aserka del mi lado</span>
-                        <span class="lyric-line indent-2">En fin de doz minutos</span>
-                        <span class="lyric-line">El pašaro bolo.</span>
-                    </div>
-                    <div class="stanza">
-                        <span class="lyric-line">El pašaro bolando</span>
-                        <span class="lyric-line indent-1">Mi korason jorando</span>
-                        <span class="lyric-line indent-2">El me dešo esperando</span>
-                        <span class="lyric-line">Sin tener piadad.</span>
-                    </div>
                 </div>
+            </div>
+        </div>
+
+        <div class="visual-area">
+            <div class="visual-wrapper">
+                <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+                    <path class="cls-1" d="M695.05,422.89c-17.47,20.77-34.93,41.54-52.4,62.32-5.51,17.94-11.02,35.88-16.52,53.82.47,18.1.94,36.19,1.42,54.29,5.35,14.48,10.7,28.95,16.05,43.43,16.21,17.47,32.42,34.93,48.63,52.4,70.81-2.83,141.63-5.67,212.44-8.5,8.92.98,28.39,4.1,31.16,14.16,2.33,8.5-8.33,18.53-29.74,38.24-11.02,10.15-20.59,17.81-26.91,22.66,6.61,13.22,13.22,26.44,19.83,39.66,13.22-2.36,26.44-4.72,39.66-7.08v-24.08c4.88-5.98,9.76-11.96,14.63-17.94,6.77-2.52,13.53-5.04,20.3-7.55-1.42-23.29-2.83-46.58-4.25-69.87,8.18-5.19,16.37-10.39,24.55-15.58,25.49-.31,50.99-.63,76.48-.94,32.57,9.44,65.15,18.88,97.72,28.33,33.83,1.57,67.67,3.15,101.5,4.72,19.2-6.92,38.4-13.85,57.6-20.77,17.31-14.16,34.62-28.33,51.93-42.49,16.84-20.61,33.68-41.23,50.51-61.84,16.52-8.66,33.05-17.31,49.57-25.97,23.92-2.36,47.84-4.72,71.76-7.08-14.79-4.56-29.58-9.13-44.38-13.69-21.87,4.25-43.75,8.5-65.62,12.75-16.52,14.48-33.05,28.95-49.57,43.43-5.98,10.07-11.96,20.14-17.94,30.21-23.29,14.79-46.58,29.58-69.87,44.38-24.55,3.46-49.1,6.92-73.65,10.39-22.66-5.35-45.32-10.7-67.98-16.05-18.25-8.97-36.51-17.94-54.76-26.91-50.04-9.13-100.08-18.25-150.12-27.38.31-14.16.63-28.33.94-42.49,6.61-8.03,13.22-16.05,19.83-24.08-3.93-12.59-7.87-25.18-11.8-37.77,8.18-13.22,16.37-26.44,24.55-39.66-12.75-5.98-25.49-11.96-38.24-17.94.63-22.19,1.26-44.38,1.89-66.56-13.06,20.14-26.12,40.29-39.18,60.43-9.28-6.45-18.57-12.9-27.85-19.36-6.14-13.38-12.27-26.75-18.41-40.13-2.05,15.42-4.09,30.84-6.14,46.26-15.89,47.21-31.79,94.42-47.68,141.63-22.03,24.08-44.06,48.15-66.09,72.23-15.58-5.67-31.16-11.33-46.74-17-8.03-9.76-16.05-19.51-24.08-29.27-.31-17-.63-33.99-.94-50.99,8.5-15.89,17-31.79,25.49-47.68-.15,3.68-.24,8.69,0,14.63.56,14.04.85,21.47,3.78,30.21,4.26,12.73,10.35,17.04,8.03,23.6-1.49,4.21-5.49,6.65-8.5,8.03,4.9,3.58,8.96,3.84,10.86,3.78,9.6-.31,19.09-10.47,21.72-25.49-2.05-12.43-4.09-24.86-6.14-37.3,4.56,1.1,9.13,2.2,13.69,3.3,3.62,8.34,7.24,16.68,10.86,25.02,1.82.01,7.26.29,12.27,4.25,6.82,5.38,7.47,13.32,7.55,14.63l-1.05.13c-4.69.59-9.37,1.17-14.06,1.76,1.5,1.07,6.01,3.96,11.8,3.3,7.24-.81,13.52-6.82,15.58-15.11-.79-7.71-1.57-15.42-2.36-23.13-2-.97-7.41-3.93-10.86-10.39-2.63-4.92-2.87-9.53-2.83-11.8,4.56-4.09,9.13-8.18,13.69-12.27,3.15-17.78,6.29-35.56,9.44-53.35-2.36-3.15-4.72-6.29-7.08-9.44.16-17,.31-33.99.47-50.99-9.91,1.1-19.83,2.2-29.74,3.3.19,8.98-.66,23.92-7.55,40.6-4.99,12.07-11.46,21-16.52,26.91-4.09-4.09-8.18-8.18-12.27-12.27-1.57-6.45-3.15-12.9-4.72-19.36,1.73-14.79,3.46-29.58,5.19-44.38-3.62-.31-7.24-.63-10.86-.94-5.98,24.55-11.96,49.1-17.94,73.65Z"/>
+                    <line class="cls-1" x1="913.62" y1="421.95" x2="827.23" y2="531.95"/>
+                    <polyline class="cls-1" points="764.92 421.95 760.19 442.25 775.77 458.3"/>
+                    <polyline class="cls-1" points="849.42 602.76 824.4 604.65 815.43 620.7"/>
+                    <polyline class="cls-1" points="787.1 600.87 798.43 636.28 833.84 652.33 890.49 671.69 923.54 677.35"/>
+                    <polyline class="cls-1" points="940.06 573.02 914.1 581.99 903.24 603.7 898.52 622.12 920.23 644.78 960.36 653.27 967.91 670.27"/>
+                    <polyline class="cls-1" points="796.07 687.74 814.96 713.23 815.43 725.03 793.24 729.75 770.11 739.67 770.58 763.74 788.52 779.32 810.24 771.77 805.04 752.41 821.09 741.55"/>
+                    <polyline class="cls-1" points="861.69 691.99 855.56 709.92 855.56 736.36 850.36 759.97 824.4 767.52 810.24 758.08 807.4 755.25"/>
+                </svg>
+
+                <img src="4.png" alt="Drawing 4 Base">
+
             </div>
         </div>
     </main>
@@ -210,22 +244,20 @@
     </footer>
 
     <script>
-        const universalToggle = document.getElementById('universal-toggle');
+        const toggle = document.getElementById('universal-toggle');
+        const body = document.body;
         const labelBos = document.getElementById('label-bos');
         const labelLad = document.getElementById('label-lad');
-        const body = document.body;
         const contentBos = document.getElementById('content-bos');
         const contentLad = document.getElementById('content-lad');
 
-        function updateDisplay(targetMode) {
-            if (targetMode === 'bosanski') {
-                body.classList.add('light-mode');
+        function updateDisplay(isLight) {
+            if (isLight) {
                 labelBos.className = 'lang-toggle active';
                 labelLad.className = 'lang-toggle inactive';
                 contentBos.classList.add('visible');
                 contentLad.classList.remove('visible');
             } else {
-                body.classList.remove('light-mode');
                 labelLad.className = 'lang-toggle active';
                 labelBos.className = 'lang-toggle inactive';
                 contentLad.classList.add('visible');
@@ -233,13 +265,13 @@
             }
         }
 
-        universalToggle.onclick = () => {
-            const currentMode = body.classList.contains('light-mode') ? 'ladino' : 'bosanski';
-            updateDisplay(currentMode);
+        toggle.onclick = () => {
+            body.classList.toggle('light-mode');
+            updateDisplay(body.classList.contains('light-mode'));
         };
 
-        labelBos.onclick = () => updateDisplay('bosanski');
-        labelLad.onclick = () => updateDisplay('ladino');
+        labelBos.onclick = () => { body.classList.add('light-mode'); updateDisplay(true); };
+        labelLad.onclick = () => { body.classList.remove('light-mode'); updateDisplay(false); };
     </script>
 </body>
 </html>

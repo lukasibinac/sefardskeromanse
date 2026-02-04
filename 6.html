@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ja sam zgodan i ti zgodna - sefardske romanse</title>
     <style>
-        /* 1. DEFINE CUSTOM FONTS */
         @font-face {
             font-family: 'NarkissAsaf';
             src: url('Narkiss Asaf Mono Regular.ttf') format('truetype');
@@ -19,9 +18,9 @@
             --bg-color: #000000; 
             --text-color: #ffffff; 
             --inactive-color: #555555;
-            --transition: 0.3s ease;
+            --transition: 0.5s ease;
         }
-        /* Light Mode = Bosanski / Dark Mode = Ladino */
+        
         .light-mode { 
             --bg-color: #ffffff; 
             --text-color: #000000; 
@@ -37,7 +36,7 @@
             flex-direction: column;
             font-family: 'NarkissYair', sans-serif;
             transition: background var(--transition);
-            overflow: hidden;
+            overflow: hidden; 
         }
 
         header {
@@ -52,60 +51,87 @@
             color: var(--text-color); 
             text-decoration: none; 
             font-size: 1.2rem; 
-            line-height: 1.2; 
             font-family: 'NarkissAsaf', monospace;
             text-transform: lowercase;
         }
 
-        main { display: flex; flex: 1; padding: 0 4rem; position: relative; overflow: hidden; }
+        main { display: flex; flex: 1; padding: 0 4rem; position: relative; align-items: center; }
 
         .sidebar {
             width: 150px;
             display: flex;
             flex-direction: column;
             gap: 5px;
-            padding-top: 20px;
             font-family: 'NarkissAsaf', monospace;
             text-transform: lowercase;
+            flex-shrink: 0;
         }
         .lang-toggle { font-size: 1.5rem; transition: color var(--transition); cursor: pointer; }
         .lang-toggle.active { color: var(--text-color); }
         .lang-toggle.inactive { color: var(--inactive-color); }
 
         .content-area {
-            flex-grow: 1;
+            width: 45%; 
             display: flex;
             flex-direction: column;
             justify-content: center;
             padding-left: 50px;
+            z-index: 10;
+        }
+
+        .visual-area {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             height: 100%;
         }
+
+        .visual-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 800px; 
+            aspect-ratio: 16 / 9;
+        }
+
+        .visual-wrapper svg,
+        .visual-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: opacity var(--transition);
+            pointer-events: none;
+        }
+
+        .visual-wrapper svg { opacity: 0; }
+        body.light-mode .visual-wrapper svg { opacity: 1; }
+
+        .visual-wrapper img { opacity: 0; }
+        body:not(.light-mode) .visual-wrapper img { opacity: 1; }
+
+        /* Illustration outlines ONLY */
+        .cls-1 { fill: none; stroke: currentColor; stroke-miterlimit: 10; stroke-width: 8px; }
+        .cls-2 { fill: none; }
 
         .romance-title {
             font-family: 'NarkissAsaf', monospace;
             font-size: 3.5rem;
             font-weight: normal;
             text-transform: lowercase;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             line-height: 1;
         }
         .title-offset { margin-left: 150px; display: block; }
 
-        .lyrics-container { 
-            font-family: 'NarkissYair', sans-serif;
-            font-size: 1.3rem; 
-            line-height: 1.3; 
-            max-width: 800px; 
-            max-height: 65vh;
-            overflow-y: auto;
-            padding-right: 20px;
-        }
-        .lyrics-container::-webkit-scrollbar { width: 0px; }
-
+        .lyrics-container { font-size: 1.3rem; line-height: 1.4; max-height: 60vh; overflow-y: auto; }
+        .lyrics-container::-webkit-scrollbar { width: 0; }
         .lyric-line { display: block; margin-bottom: 2px; }
         .indent-1 { margin-left: 40px; }
         .indent-2 { margin-left: 80px; }
-        .stanza { margin-bottom: 1.5rem; }
+        .stanza { margin-bottom: 2rem; }
 
         footer {
             height: 100px;
@@ -189,6 +215,46 @@
                 </div>
             </div>
         </div>
+
+        <div class="visual-area">
+            <div class="visual-wrapper">
+                <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+                    <polyline class="cls-1" points="974.96 561.25 1060.6 540.58 1163.96 546.49 1252.55 553.38 1306.68 564.21 1306.68 552.39 1292.9 546.49 1263.37 551.41 1272.89 521.55 1266.98 495.3 1243.03 486.11 1228.59 487.1 1245.98 479.88 1256.48 454.62 1249.92 418.85 1222.69 397.52 1247.3 404.74 1264.36 408.68 1354.59 413.6 1376.24 422.46 1397.57 445.76 1412.99 487.76 1420.21 547.8 1432.68 584.22 1441.21 594.72 1464.51 596.36 1481.24 586.52 1478.62 556.33 1468.12 525.49 1449.41 498.91 1433.66 472.66 1430.06 445.43 1440.88 422.79 1469.76 402.45 1501.91 402.45 1524.22 416.23 1533.74 425.74 1568.85 427.05 1569.18 437.55 1568.52 447.73 1566.22 480.86 1545.55 475.61 1533.41 480.54 1509.13 490.05"/>
+                    <polyline class="cls-1" points="1480.91 438.21 1501.58 453.63 1515.69 443.13 1516.35 424.76"/>
+                    <polyline class="cls-1" points="1502.9 404.41 1472.05 428.69 1468.77 457.9 1465.82 469.05 1500.27 507.44 1526.85 506.79 1544.24 533.69 1548.83 557.97 1545.22 567.16 1547.19 648.53 1565.89 676.09 1567.21 687.9 1556.05 708.25 1538.33 713.17 1526.85 711.53 1513.07 702.67 1507.16 686.59 1516.02 664.94 1532.75 658.37 1544.57 651.16"/>
+                    <polyline class="cls-1" points="1313.25 570.44 1327.36 585.86 1347.37 584.22 1365.09 591.11 1368.37 608.17 1368.7 625.23 1351.64 641.64 1330.64 653.12 1311.93 652.8 1303.4 663.95 1302.09 687.58 1298.48 695.78 1297.17 704.97 1304.06 707.92 1301.44 722.36 1298.81 725.97 1305.7 734.17 1318.83 737.78 1323.09 728.92 1324.07 736.79 1339.17 736.14 1341.14 722.03 1326.04 707.92 1324.4 689.87 1341.79 686.92 1386.09 689.54"/>
+                    <polyline class="cls-1" points="1343.43 736.79 1363.12 729.57 1353.61 703 1362.14 702.67 1382.15 698.4 1397.24 700.04 1409.38 704.31 1439.57 705.29 1461.88 702.67 1501.26 687.9 1507.16 686.59"/>
+                    <polyline class="cls-1" points="1445.48 482.18 1464.18 498.91 1488.79 503.5 1493.05 503.5"/>
+                    <line class="cls-1" x1="1521.93" y1="488.08" x2="1526.19" y2="504.82"/>
+                    <polyline class="cls-1" points="1396.92 464.79 1384.78 471.35 1384.12 482.51 1391.01 488.41"/>
+                    <polyline class="cls-1" points="1274.86 451.33 1312.59 440.84 1356.89 443.46 1379.53 456.58"/>
+                    <polyline class="cls-1" points="1371.65 477.91 1337.2 476.27 1288.64 506.13"/>
+                    <polyline class="cls-1" points="1387.07 509.08 1343.43 523.19 1325.39 550.75"/>
+                    <polyline class="cls-1" points="1310.46 648.86 1235.32 617.36 1174.62 595.7 1097.84 578.31 1046.66 573.39 998.42 578.64 987.92 581.92"/>
+                    <polyline class="cls-1" points="930.83 583.56 915.74 604.56 909.83 633.77 912.13 659.03 922.63 686.59 945.92 705.29 963.31 709.23 987.6 707.92 1049.28 698.73 1087.34 695.78 1141.81 691.84 1202.84 692.83 1279.94 705.62 1246.15 690.2 1230.73 682 1185.12 663.95 1136.23 644.92 1097.18 635.73 1062.73 637.7 1041.41 650.5 1037.14 667.89 1039.77 677.4 983.33 690.86 949.86 682.98 934.11 661 930.83 624.25 946.58 594.39"/>
+                    <polyline class="cls-1" points="384.69 391.13 358.11 391.62 339.41 407.37 334.98 420.16 332.52 438.87 340.39 450.19 354.67 450.19 396.99 459.54 368.94 463.47 375.34 472.83 365.49 516.14 365 536.81 357.54 543.7 358.27 579.63 374.27 614.82 409.95 662.31 449.57 694.06 482.55 709.81 461.63 696.02 494.11 682.74 521.68 671.42 538.9 657.39 551.45 620.48 545.79 515.89 544.56 468.89 559.57 425.58 586.64 401.46 625.28 397.03 748.81 393.83 729.86 408.35 717.56 426.07 713.87 441.57 727.65 466.18 711.65 462.74 681.88 466.92 660.96 484.64 654.56 496.45 653.82 513.18 662.19 527.21 648.41 520.07 630.94 520.32 609.77 534.1 599.93 544.68 596.48 561.66 692.95 545.67 833.71 540.99 927.22 545.17 953.06 554.77 967.83 563.88 980.13 559.69"/>
+                    <polyline class="cls-1" points="645.54 642.13 663.91 637.87 793.19 597.84 856.51 582.42 894.58 579.13 929.03 586.02 955.28 600.46 964.79 609.32 974.63 628.02 977.26 654.27 976.28 670.02 973.32 679.21 967.09 685.77"/>
+                    <polyline class="cls-1" points="967.83 563.88 983.49 583.4 997.27 610.63 1004.16 641.8 1003.18 664.77 993.01 685.44"/>
+                    <path class="cls-1" d="M926.89,694.79l-35.44,3.28-21-9.84-3.61-13.45,2.62-18.05-3.61-22.31-18.05-11.81-37.4,3.61-76.12,35.44-77.76,23.95c47.25,4.59,92.53,3.28,92.53,3.28l43.64,6.56,63.65,14.77,35.44,5.91,68.9-6.56"/>
+                    <polyline class="cls-1" points="553.17 638.03 566.3 661 590.25 655.09 600.42 667.89 599.11 677.08 574.17 686.26 574.17 705.29 592.55 706.93 599.11 683.97 594.84 707.59 599.44 705.29 606.66 694.14 605.02 704.64 618.8 703.33 623.39 687.25 640.45 679.04 647.34 666.9 641.44 641.64 639.14 631.14 634.87 624.25 614.86 623.92 599.77 598.99 596.81 562.56"/>
+                    <polyline class="cls-1" points="406.84 389.65 419.63 407.7 443.26 396.54"/>
+                    <polyline class="cls-1" points="386.49 389.98 390.43 372.59 419.63 365.7 467.21 368.98 488.21 392.93 499.69 412.95 494.44 447.4 470.82 473.32 440.96 489.4 425.21 489.07"/>
+                    <polyline class="cls-1" points="448.18 493.66 436.04 512.69 427.51 545.83 442.27 573.39 469.51 576.02 492.8 566.5"/>
+                    <polyline class="cls-1" points="457.04 572.41 485.25 550.42 501 534.68 528.57 472.99 545.63 434.93 575.81 409.34"/>
+                    <polyline class="cls-1" points="571.55 450.02 638.48 421.8 691.31 425.74"/>
+                    <polyline class="cls-1" points="553.83 474.96 593.2 457.24 650.62 462.82"/>
+                    <polyline class="cls-1" points="550.22 502.52 575.81 492.02 604.03 496.29"/>
+                    <polygon class="cls-1" points="348.76 608.66 323.49 626.05 321.53 645.41 329.4 669.37 353.03 675.27 376.65 666.41 384.2 643.77 379.93 626.38 368.45 613.59 348.76 608.66"/>
+                    <polyline class="cls-1" points="422.26 368.81 439.32 379.64 449.16 397.03 451.46 426.56 442.6 441.33 410.77 459.05"/>
+                    <polyline class="cls-1" points="388.13 390.47 405.52 403.27 415.69 427.55 417.01 442.64 401.26 455.76"/>
+                    <polyline class="cls-1" points="341.87 437.06 373.04 428.2 415.37 440.34"/>
+                    <line class="cls-1" x1="353.35" y1="401.63" x2="352.04" y2="409.17"/>
+                    <polyline class="cls-1" points="1398.23 493.33 1399.21 528.77 1390.03 579.46 1386.09 624.58 1394.46 647.38 1408.4 669.86 1405.45 682.98 1389.37 694.47"/>
+                    <path class="cls-1" d="M1562.12,432.47l-4.59,9.19"/>
+                </svg>
+                <img src="6.png" alt="Drawing 6">
+            </div>
+        </div>
     </main>
 
     <footer>
@@ -198,22 +264,20 @@
     </footer>
 
     <script>
-        const universalToggle = document.getElementById('universal-toggle');
+        const toggle = document.getElementById('universal-toggle');
+        const body = document.body;
         const labelBos = document.getElementById('label-bos');
         const labelLad = document.getElementById('label-lad');
-        const body = document.body;
         const contentBos = document.getElementById('content-bos');
         const contentLad = document.getElementById('content-lad');
 
-        function updateDisplay(targetMode) {
-            if (targetMode === 'bosanski') {
-                body.classList.add('light-mode');
+        function updateDisplay(isLight) {
+            if (isLight) {
                 labelBos.className = 'lang-toggle active';
                 labelLad.className = 'lang-toggle inactive';
                 contentBos.classList.add('visible');
                 contentLad.classList.remove('visible');
             } else {
-                body.classList.remove('light-mode');
                 labelLad.className = 'lang-toggle active';
                 labelBos.className = 'lang-toggle inactive';
                 contentLad.classList.add('visible');
@@ -221,13 +285,13 @@
             }
         }
 
-        universalToggle.onclick = () => {
-            const currentMode = body.classList.contains('light-mode') ? 'ladino' : 'bosanski';
-            updateDisplay(currentMode);
+        toggle.onclick = () => {
+            body.classList.toggle('light-mode');
+            updateDisplay(body.classList.contains('light-mode'));
         };
 
-        labelBos.onclick = () => updateDisplay('bosanski');
-        labelLad.onclick = () => updateDisplay('ladino');
+        labelBos.onclick = () => { body.classList.add('light-mode'); updateDisplay(true); };
+        labelLad.onclick = () => { body.classList.remove('light-mode'); updateDisplay(false); };
     </script>
 </body>
 </html>
